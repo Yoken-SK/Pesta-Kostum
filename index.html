@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Scoring Lomba Kostum - PetroChina</title>
     <style>
-        /* CSS Utama Murni - Dijamin Jalan Offline & Pas di HP */
+        /* CSS Utama Murni - Dijamin Jalan Tanpa Internet & Pas di HP */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -195,10 +195,11 @@
         .bg-baik { background-color: #f59e0b; }
         .bg-sangat-baik { background-color: #dc2626; }
 
-        /* Desain Tabel Input Spesifik */
-        .table-container {
+        /* Desain Tabel Blok */
+        .table-area {
             width: 100%;
             margin-bottom: 16px;
+            overflow-x: auto;
         }
 
         table.tabel-aplikasi {
@@ -272,7 +273,7 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header Colorful & Aman Tanpa Internet -->
     <header>
         <div class="header-container">
             <div class="header-left">
@@ -295,7 +296,7 @@
             <input type="text" id="namaJuri" placeholder="Ketik nama Anda di sini...">
         </section>
 
-        <!-- Card Input Nilai Utama -->
+        <!-- Card Input Nilai -->
         <section class="card">
             <div class="card-title-area">
                 <div class="dot-amber"></div>
@@ -318,5 +319,3 @@
                 <span><span class="badge-number bg-cukup">1</span> Cukup</span>
                 <span><span class="badge-number bg-baik">2</span> Baik</span>
                 <span><span class="badge-number bg-sangat-baik">3</span> Sangat Baik</span>
-            </div>
-
