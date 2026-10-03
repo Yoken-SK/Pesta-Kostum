@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Scoring Lomba Kostum - PetroChina</title>
     <style>
-        /* CSS Utama Murni - Dijamin Jalan Tanpa Internet & Pas di HP */
+        /* CSS Utama Murni - Dijamin Jalan Offline & Pas di HP */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -101,11 +101,6 @@
         .card-accent {
             border-left: 5px solid #dc2626;
         }
-        
-        .card-winner {
-            border-left: 5px solid #f59e0b;
-            background: linear-gradient(to bottom right, #ffffff, #fffbeb);
-        }
 
         .card-title-area {
             display: flex;
@@ -116,19 +111,25 @@
             margin-bottom: 16px;
         }
 
-        .dot-amber { width: 8px; height: 8px; background-color: #f59e0b; border-radius: 50%; }
-        .dot-red { width: 8px; height: 8px; background-color: #dc2626; border-radius: 50%; }
-        .dot-gold { width: 8px; height: 8px; background-color: #d97706; border-radius: 50%; }
+        .dot-amber {
+            width: 8px;
+            height: 8px;
+            background-color: #f59e0b;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            width: 8px;
+            height: 8px;
+            background-color: #dc2626;
+            border-radius: 50%;
+        }
 
         .card h2 {
             font-size: 13px;
             font-weight: 700;
             color: #475569;
             text-transform: uppercase;
-        }
-
-        .form-group {
-            margin-bottom: 14px;
         }
 
         label {
@@ -140,7 +141,7 @@
             margin-bottom: 6px;
         }
 
-        input[type="text"], input[type="number"], select {
+        input[type="text"], select {
             width: 100%;
             height: 42px;
             border: 1px solid #cbd5e1;
@@ -153,12 +154,10 @@
         }
 
         select {
-            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://w3.org' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://w3.org' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%20%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
             background-position: right 10px center;
             background-repeat: no-repeat;
             background-size: 16px;
-            appearance: none;
-            -webkit-appearance: none;
         }
 
         input:focus, select:focus {
@@ -196,10 +195,10 @@
         .bg-baik { background-color: #f59e0b; }
         .bg-sangat-baik { background-color: #dc2626; }
 
-        .table-area {
+        /* Desain Tabel Input Spesifik */
+        .table-container {
             width: 100%;
             margin-bottom: 16px;
-            overflow-x: auto;
         }
 
         table.tabel-aplikasi {
@@ -229,33 +228,6 @@
             color: #475569;
             padding-right: 10px;
             line-height: 1.4;
-            width: 65%;
-        }
-
-        .input-nilai-container {
-            width: 35%;
-        }
-
-        .total-running-box {
-            background: #f1f5f9;
-            border-radius: 10px;
-            padding: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            font-weight: 700;
-        }
-
-        .total-running-box span:first-child {
-            font-size: 12px;
-            color: #475569;
-        }
-
-        .total-running-box span:last-child {
-            font-size: 18px;
-            color: #dc2626;
-            font-family: monospace;
         }
 
         button.btn-submit {
@@ -271,8 +243,6 @@
             box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.2);
             margin-top: 6px;
         }
-
-        button.btn-submit:active { opacity: 0.9; }
 
         .flex-between {
             display: flex;
@@ -292,63 +262,61 @@
             cursor: pointer;
         }
 
-        .btn-delete-item {
-            background: none;
-            border: none;
-            color: #94a3b8;
-            cursor: pointer;
-        }
-        
-        /* Tambahan CSS Dashboard */
-        .dashboard-list {
-            list-style: none;
-            margin-top: 10px;
-        }
-        .dashboard-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 14px;
-        }
-        .dashboard-item span.rank {
-            font-weight: bold;
-            margin-right: 10px;
-            color: #f97316;
-        }
+        .td-name { font-weight: 600; color: #334155; font-size: 12px; }
+        .td-score { text-align: center; color: #64748b; font-family: monospace; font-size: 11px; }
+        .td-total { text-align: right; font-weight: 700; color: #dc2626; font-size: 14px; font-family: monospace; }
+
+        .hidden { display: none !important; }
+        .empty-text { font-size: 12px; color: #94a3b8; text-align: center; padding: 20px 0; }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
         <div class="header-container">
             <div class="header-left">
                 <div class="logo-box">
-                    <!-- Sediakan fallback teks jika gambar logo tidak ada -->
-                    <img src="logo.png" alt="PC">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNNSA1MCBBIDQ1IDQ1IDAgMSAxIDk1IDUwIEEgNDUgNDUgMCAxIDEgNSA1MCBaIiBmaWxsPSIjZjU4YTE5Ii8+PHBhdGggZD0iTTUgNTAgQSA0NSA0NSAwIDAgMCA5NSA1MCBaIiBmaWxsPSIjYzAwMDAwIi8+PHBhdGggZD0iTTUwIDUgTDUwIDUwIE01MCA1IEwyNSA0NSBNNTAgNSBMMzcgNDUgTTUwIDUgTDYzIDQ1IE01MCA1IEw3NSA0NSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMiLz48L3N2Zz4=" alt="PetroChina">
                 </div>
                 <div class="header-title">
-                    <h1>PetroChina</h1>
-                    <p>Scoring Lomba Kostum</p>
+                    <h1>Lomba Costume Casual</h1>
+                    <p>Team Building Assessment</p>
                 </div>
             </div>
-            <span class="badge-hp">Mobile V1</span>
+            <span class="badge-hp">HP Mode</span>
         </div>
     </header>
 
     <main>
-        <!-- CARD INPUT FORM -->
-        <div class="card card-accent">
+        <!-- Card Nama Juri -->
+        <section class="card card-accent">
+            <label for="namaJuri">Nama Juri / Penilai</label>
+            <input type="text" id="namaJuri" placeholder="Ketik nama Anda di sini...">
+        </section>
+
+        <!-- Card Input Nilai Utama -->
+        <section class="card">
             <div class="card-title-area">
-                <div class="dot-red"></div>
-                <h2>Form Penilaian</h2>
+                <div class="dot-amber"></div>
+                <h2>Form Input Nilai</h2>
             </div>
             
-            <div class="form-group">
-                <label for="nama_peserta">Nama Peserta / Tim</label>
-                <input type="text" id="nama_peserta" placeholder="Masukkan nama peserta...">
+            <div style="margin-bottom: 16px;">
+                <label for="pilihPeserta">Pilih Peserta / Tim</label>
+                <select id="pilihPeserta">
+                    <option value="">-- Ketuk untuk memilih nama --</option>
+                    <option value="Peserta 01 - Budi">Peserta 01 - Budi</option>
+                    <option value="Peserta 02 - Sinta">Peserta 02 - Sinta</option>
+                    <option value="Peserta 03 - Andi">Peserta 03 - Andi</option>
+                    <option value="Peserta 04 - Rini">Peserta 04 - Rini</option>
+                    <option value="Peserta 05 - Doni">Peserta 05 - Doni</option>
+                </select>
             </div>
 
             <div class="banner-skala">
-                <span><span class="badge-number bg-cukup">1</span>60-70 Cukup</span>
-                <span><span class="badge-number bg-baik">2</span>71-85 Baik</span>
+                <span><span class="badge-number bg-cukup">1</span> Cukup</span>
+                <span><span class="badge-number bg-baik">2</span> Baik</span>
+                <span><span class="badge-number bg-sangat-baik">3</span> Sangat Baik</span>
+            </div>
+
