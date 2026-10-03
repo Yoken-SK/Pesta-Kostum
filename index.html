@@ -7,7 +7,6 @@
     <style>
         /* Theme - Deep Slate Indigo Gradient (Gelap di Atas -> Terang di Bawah) */
         :root {
-            /* Gradasi latar belakang: Gelap (#1e293b) di atas ke Terang (#e2e8f0) di bawah */
             --bg-gradient: linear-gradient(180deg, #1e293b 0%, #334155 35%, #94a3b8 70%, #e2e8f0 100%);
             --card-bg: #ffffff;
             --card-border: #cbd5e1;
@@ -27,7 +26,6 @@
             --pastel-amber-border: #f59e0b;
             --pastel-amber-text: #b45309;
 
-            --pastel-indigo-bg: #ee2e8ff;
             --pastel-indigo-bg-soft: #f0f3ff;
             --pastel-indigo-border: #818cf8;
             --pastel-indigo-text: #3730a3;
@@ -333,7 +331,7 @@
     <!-- Input Nilai Peserta -->
     <h2>Input Nilai Peserta</h2>
     <div class="form-group">
-        <label for="pilihPeserta">Pilih Peserta Lomba</label>
+        <label for="pilihPeserta">Pilih Peserta Lomba (Abjad A-Z)</label>
         <div class="select-wrapper">
             <select id="pilihPeserta"></select>
         </div>
@@ -461,13 +459,18 @@
         document.getElementById("val" + kat).textContent = roundedVal;
     }
 
+    // Mengisi dropdown dengan pengurutan ABJAD (A-Z) dan tanpa nomor urut
     function isiDropdownPeserta() {
         const select = document.getElementById("pilihPeserta");
         select.innerHTML = "";
-        skorPeserta.forEach(p => {
+        
+        // Buat salinan array dan urutkan berdasarkan nama (A-Z)
+        let pesertaDiurutkan = [...skorPeserta].sort((a, b) => a.nama.localeCompare(b.nama));
+
+        pesertaDiurutkan.forEach(p => {
             let opt = document.createElement("option");
-            opt.value = p.noUrut;
-            opt.textContent = `${p.noUrut}. ${p.nama}`;
+            opt.value = p.noUrut; // Tetap menyimpan ID unik sebagai value
+            opt.textContent = p.nama; // Hanya menampilkan NAMA (urut Abjad)
             select.appendChild(opt);
         });
     }
