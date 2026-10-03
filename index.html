@@ -43,12 +43,12 @@
         h2 { font-size: 1.1rem; color: #34d399; margin: 20px 0 10px 0; border-bottom: 1px solid #1f3a2b; padding-bottom: 5px; }
         
         /* Form & Input Mobile-Friendly */
-        .form-group { margin-bottom: 12px; }
-        label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 0.88rem; color: #cbd5e1; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; color: #cbd5e1; }
         
-        input[type="text"], input[type="number"], select { 
+        select { 
             width: 100%; 
-            padding: 10px 12px; 
+            padding: 12px; 
             font-size: 15px;
             background-color: #1a3024; 
             border: 1px solid #2d523d; 
@@ -58,14 +58,83 @@
             transition: border-color 0.2s;
             -webkit-appearance: none;
         }
-        input:focus, select:focus { border-color: #10b981; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2); }
+        select:focus { border-color: #10b981; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2); }
         
-        /* Grid 3 Kategori */
-        .kategori-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        /* Style Slider Geser */
+        .slider-card {
+            background: #162e22;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #2d523d;
+            margin-bottom: 12px;
+        }
+        
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .slider-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+        }
+        
+        .slider-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #10b981;
+            background: #0b130f;
+            padding: 2px 10px;
+            border-radius: 6px;
+            border: 1px solid #10b981;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
             gap: 10px;
-            margin-bottom: 10px;
+        }
+
+        .slider-container span {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background: #1a3024;
+            outline: none;
+            border: 1px solid #2d523d;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+            border: none;
         }
 
         /* Box Kriteria */
@@ -86,13 +155,13 @@
             width: 100%; 
             background-color: #10b981; 
             color: #0b130f; 
-            padding: 12px; 
+            padding: 14px; 
             border: none; 
             border-radius: 8px; 
             cursor: pointer; 
-            font-size: 0.95rem; 
+            font-size: 1rem; 
             font-weight: 700;
-            margin-top: 10px;
+            margin-top: 15px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             transition: background 0.2s;
             text-align: center;
@@ -103,6 +172,8 @@
             background-color: #1e3a29;
             color: #34d399;
             border: 1px solid #2d523d;
+            font-size: 0.9rem;
+            padding: 10px;
         }
         .btn-secondary:active { background-color: #274d37; }
         
@@ -145,7 +216,7 @@
         .select-wrapper { position: relative; }
         .select-wrapper::after {
             content: "▼"; font-size: 10px; color: #a7f3d0;
-            position: absolute; right: 15px; top: 14px; pointer-events: none;
+            position: absolute; right: 15px; top: 16px; pointer-events: none;
         }
     </style>
 </head>
@@ -153,9 +224,9 @@
 
 <div class="container">
     <h1>Scoring Juri Lomba Kostum</h1>
-    <div class="subtitle">PetroChina System (3 Juri & 3 Kategori)</div>
+    <div class="subtitle">PetroChina System (Slider Input Mode)</div>
     
-    <!-- Dropdown Juri -->
+    <!-- Input Juri -->
     <div class="form-group">
         <label for="pilihJuri">Pilih Juri Penilai</label>
         <div class="select-wrapper">
@@ -168,9 +239,9 @@
     </div>
 
     <div class="criteria-box">
-        <strong>Skala Penilaian Kategori (60 - 100):</strong><br>
+        <strong>Skala Penilaian Kategori (Geser 60 - 100):</strong><br>
         60 - 79: Cukup | 80 - 89: Baik | 90 - 100: Istimewa<br>
-        <em>*Nilai total tiap juri & rata-rata 3 juri dihitung otomatis.</em>
+        <em>*Geser tombol hijau ke kanan/kiri untuk memilih nilai.</em>
     </div>
 
     <!-- Input Nilai Peserta -->
@@ -182,19 +253,40 @@
         </div>
     </div>
     
-    <!-- 3 Kategori Penilaian -->
-    <div class="kategori-grid">
-        <div class="form-group">
-            <label for="skorKreativitas">Kreativitas</label>
-            <input type="number" id="skorKreativitas" inputmode="numeric" min="60" max="100" placeholder="60-100">
+    <!-- Slider 3 Kategori Penilaian -->
+    <div class="slider-card">
+        <div class="slider-header">
+            <span class="slider-title">Kreativitas</span>
+            <span class="slider-value" id="valKreativitas">75</span>
         </div>
-        <div class="form-group">
-            <label for="skorPD">Kepercayaan Diri</label>
-            <input type="number" id="skorPD" inputmode="numeric" min="60" max="100" placeholder="60-100">
+        <div class="slider-container">
+            <span>60</span>
+            <input type="range" id="skorKreativitas" min="60" max="100" value="75" oninput="updateVal('Kreativitas')">
+            <span>100</span>
         </div>
-        <div class="form-group">
-            <label for="skorKerapian">Kerapian</label>
-            <input type="number" id="skorKerapian" inputmode="numeric" min="60" max="100" placeholder="60-100">
+    </div>
+
+    <div class="slider-card">
+        <div class="slider-header">
+            <span class="slider-title">Kepercayaan Diri</span>
+            <span class="slider-value" id="valPD">75</span>
+        </div>
+        <div class="slider-container">
+            <span>60</span>
+            <input type="range" id="skorPD" min="60" max="100" value="75" oninput="updateVal('PD')">
+            <span>100</span>
+        </div>
+    </div>
+
+    <div class="slider-card">
+        <div class="slider-header">
+            <span class="slider-title">Kerapian</span>
+            <span class="slider-value" id="valKerapian">75</span>
+        </div>
+        <div class="slider-container">
+            <span>60</span>
+            <input type="range" id="skorKerapian" min="60" max="100" value="75" oninput="updateVal('Kerapian')">
+            <span>100</span>
         </div>
     </div>
 
@@ -230,7 +322,6 @@
 </div>
 
 <script>
-    // Database Master 50 Peserta
     const dataPesertaMaster = [
         "PUTU BUDAYASA", "MUHAMMAD ASRI", "PRIMAYUDI", "TANDI MATONGAN", "KUBROHADI",
         "SASONO WIDODO", "NURAYAH", "TOTOK WIDI NUGROHO", "BUDIYONO", "SABAR LUMBAN TORUAN",
@@ -247,7 +338,7 @@
     let skorPeserta = [];
 
     function init() {
-        const simpananData = localStorage.getItem("petrochina_skor_v2");
+        const simpananData = localStorage.getItem("petrochina_skor_v3");
 
         if (simpananData) {
             skorPeserta = JSON.parse(simpananData);
@@ -271,6 +362,17 @@
         muatNilaiInput();
     }
 
+    function updateVal(kat) {
+        const val = document.getElementById("skor" + kat).value;
+        document.getElementById("val" + kat).textContent = val;
+    }
+
+    function setSliderVal(kat, val) {
+        const defaultVal = val > 0 ? val : 75;
+        document.getElementById("skor" + kat).value = defaultVal;
+        document.getElementById("val" + kat).textContent = defaultVal;
+    }
+
     function isiDropdownPeserta() {
         const select = document.getElementById("pilihPeserta");
         select.innerHTML = "";
@@ -282,13 +384,11 @@
         });
     }
 
-    // Hitung rata-rata 3 kategori untuk 1 juri
     function hitungRataJuri(dataJuri) {
         if (!dataJuri || (dataJuri.kreativitas === 0 && dataJuri.pd === 0 && dataJuri.kerapian === 0)) return 0;
         return (dataJuri.kreativitas + dataJuri.pd + dataJuri.kerapian) / 3;
     }
 
-    // Hitung rata-rata gabungan dari juri yang sudah memberikan nilai
     function hitungRataTotal(peserta) {
         let total = 0;
         let count = 0;
@@ -309,9 +409,9 @@
 
         if (peserta && peserta.juri[idJuri]) {
             const data = peserta.juri[idJuri];
-            document.getElementById("skorKreativitas").value = data.kreativitas > 0 ? data.kreativitas : "";
-            document.getElementById("skorPD").value = data.pd > 0 ? data.pd : "";
-            document.getElementById("skorKerapian").value = data.kerapian > 0 ? data.kerapian : "";
+            setSliderVal("Kreativitas", data.kreativitas);
+            setSliderVal("PD", data.pd);
+            setSliderVal("Kerapian", data.kerapian);
         }
     }
 
@@ -323,13 +423,6 @@
         const pd = parseInt(document.getElementById("skorPD").value);
         const rapi = parseInt(document.getElementById("skorKerapian").value);
 
-        if (isNaN(krea) || krea < 60 || krea > 100 ||
-            isNaN(pd) || pd < 60 || pd > 100 ||
-            isNaN(rapi) || rapi < 60 || rapi > 100) {
-            alert("Harap isi ketiga kategori (Kreativitas, Kepercayaan Diri, Kerapian) dengan skor valid antara 60 hingga 100!");
-            return;
-        }
-
         let peserta = skorPeserta.find(p => p.noUrut === idPeserta);
         if (peserta) {
             peserta.juri[idJuri] = {
@@ -339,10 +432,11 @@
             };
         }
 
-        localStorage.setItem("petrochina_skor_v2", JSON.stringify(skorPeserta));
+        localStorage.setItem("petrochina_skor_v3", JSON.stringify(skorPeserta));
 
         tampilkanLeaderboard();
         
+        // Pindahkan ke peserta berikutnya otomatis
         const select = document.getElementById("pilihPeserta");
         if (select.selectedIndex < select.options.length - 1) {
             select.selectedIndex += 1;
@@ -367,7 +461,6 @@
             return a.noUrut - b.noUrut;
         });
 
-        // Tampilkan HANYA Top 10 Peserta
         let top10 = diurutkan.slice(0, 10);
 
         top10.forEach((p, index) => {
@@ -421,7 +514,7 @@
 
     function resetData() {
         if (confirm("Apakah Anda yakin ingin menghapus seluruh nilai dari 3 Juri? Data yang dihapus tidak dapat dikembalikan.")) {
-            localStorage.removeItem("petrochina_skor_v2");
+            localStorage.removeItem("petrochina_skor_v3");
             skorPeserta = dataPesertaMaster.map((nama, index) => ({
                 noUrut: index + 1,
                 nama: nama,
