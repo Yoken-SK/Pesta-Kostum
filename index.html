@@ -249,10 +249,10 @@
             margin-top: 10px;
         }
         
-        /* Table Styling - Fitted to 1 Page Width */
+        /* Table Styling - Fitted Without Clipping */
         .table-responsive {
             width: 100%;
-            overflow-x: hidden; /* Disable horizontal scroll */
+            overflow-x: hidden;
             margin-top: 10px;
             border-radius: 10px;
             border: 1px solid var(--card-border);
@@ -261,31 +261,39 @@
         table { 
             width: 100%; 
             border-collapse: collapse; 
-            table-layout: fixed; /* Force fix width layout */
+            table-layout: fixed;
             font-size: 0.78rem; 
         }
         
         th, td { 
-            padding: 7px 3px; 
+            padding: 8px 2px; 
             text-align: center; 
             border-bottom: 1px solid #e2e8f0; 
             word-wrap: break-word;
+            overflow: hidden;
         }
         
         th { 
             background-color: #f1f5f9; 
             color: #334155; 
             font-weight: 800; 
-            font-size: 0.75rem;
+            font-size: 0.73rem;
+            white-space: nowrap;
         }
         
         td { color: #0f172a; }
-        td.text-left { text-align: left; padding-left: 5px; }
+        td.text-left { text-align: left; padding-left: 6px; }
         tr:nth-child(even) { background-color: #f8fafc; }
         
         .rank { font-weight: 800; color: #d97706; }
         .total-score { font-weight: 800; color: #0284c7; font-size: 0.82rem; }
         
+        .empty-row {
+            color: #94a3b8;
+            font-style: italic;
+            padding: 16px;
+        }
+
         /* Custom Select Arrow */
         .select-wrapper { position: relative; }
         .select-wrapper::after {
@@ -377,13 +385,12 @@
         <table>
             <thead>
                 <tr>
-                    <th style="width: 8%;">Rk</th>
-                    <th style="width: 8%;">No</th>
-                    <th style="width: 44%; text-align: left; padding-left: 5px;">Nama Peserta</th>
-                    <th style="width: 10%;">J1</th>
-                    <th style="width: 10%;">J2</th>
-                    <th style="width: 10%;">J3</th>
-                    <th style="width: 10%;">Rata</th>
+                    <th style="width: 10%;">Rk</th>
+                    <th style="width: 45%; text-align: left; padding-left: 6px;">Nama Peserta</th>
+                    <th style="width: 11%;">J1</th>
+                    <th style="width: 11%;">J2</th>
+                    <th style="width: 11%;">J3</th>
+                    <th style="width: 12%;">Rata</th>
                 </tr>
             </thead>
             <tbody id="tabelSkor">
@@ -524,7 +531,15 @@
         const tbody = document.getElementById("tabelSkor");
         tbody.innerHTML = "";
 
-        let diurutkan = skorPeserta.map(p => {
+        // Filter hanya peserta yang sudah memiliki nilai minimal dari 1 juri
+        let terisi = skorPeserta.filter(p => hitungRataTotal(p) > 0);
+
+        if (terisi.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="6" class="empty-row">Belum ada data nilai yang dimasukkan</td></tr>`;
+            return;
+        }
+
+        let diurutkan = terisi.map(p => {
             let r1 = hitungRataJuri(p.juri[1]);
             let r2 = hitungRataJuri(p.juri[2]);
             let r3 = hitungRataJuri(p.juri[3]);
@@ -537,13 +552,13 @@
             return a.noUrut - b.noUrut;
         });
 
+        // Maksimal Top 10
         let top10 = diurutkan.slice(0, 10);
 
         top10.forEach((p, index) => {
             let tr = document.createElement("tr");
             tr.innerHTML = `
                 <td class="rank">${index + 1}</td>
-                <td>${p.noUrut}</td>
                 <td class="text-left"><strong>${p.nama}</strong></td>
                 <td>${p.r1 > 0 ? p.r1.toFixed(1) : '-'}</td>
                 <td>${p.r2 > 0 ? p.r2.toFixed(1) : '-'}</td>
