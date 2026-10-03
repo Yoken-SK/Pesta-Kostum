@@ -296,51 +296,59 @@
             background: none;
             border: none;
             color: #94a3b8;
-            font-size: 16px;
             cursor: pointer;
-            padding: 0 4px;
         }
         
-        .btn-delete-item:hover { color: #ef4444; }
-
-        .td-name { font-weight: 600; color: #334155; font-size: 12px; }
-        .td-subtext { font-size: 10px; color: #64748b; margin-top: 2px; }
-        .td-score { text-align: center; color: #64748b; font-family: monospace; font-size: 11px; white-space: nowrap; }
-        .td-total { text-align: right; font-weight: 700; color: #dc2626; font-size: 14px; font-family: monospace; }
-
-        /* Gaya untuk Podium Pemenang */
-        .podium-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-end;
-            padding: 10px 0;
+        /* Tambahan CSS Dashboard */
+        .dashboard-list {
+            list-style: none;
             margin-top: 10px;
         }
-
-        .podium-item {
+        .dashboard-item {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            width: 30%;
-        }
-
-        .podium-bar {
-            width: 100%;
-            background: linear-gradient(to top, #e2e8f0, #cbd5e1);
-            border-radius: 6px 6px 0 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #334155;
-            font-weight: bold;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
             font-size: 14px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
+        .dashboard-item span.rank {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #f97316;
+        }
+    </style>
+</head>
+<body>
 
-        .podium-1 .podium-bar { background: linear-gradient(to top, #f59e0b, #fbbf24); height: 65px; color: #78350f; }
-        .podium-2 .podium-bar { background: linear-gradient(to top, #94a3b8, #cbd5e1); height: 45px; color: #1e293b; }
-        .podium-3 .podium-bar { background: linear-gradient(to top, #b45309, #d97706); height: 35px; color: #fff; }
+    <header>
+        <div class="header-container">
+            <div class="header-left">
+                <div class="logo-box">
+                    <!-- Sediakan fallback teks jika gambar logo tidak ada -->
+                    <img src="logo.png" alt="PC">
+                </div>
+                <div class="header-title">
+                    <h1>PetroChina</h1>
+                    <p>Scoring Lomba Kostum</p>
+                </div>
+            </div>
+            <span class="badge-hp">Mobile V1</span>
+        </div>
+    </header>
 
-        .podium-meta {
+    <main>
+        <!-- CARD INPUT FORM -->
+        <div class="card card-accent">
+            <div class="card-title-area">
+                <div class="dot-red"></div>
+                <h2>Form Penilaian</h2>
+            </div>
+            
+            <div class="form-group">
+                <label for="nama_peserta">Nama Peserta / Tim</label>
+                <input type="text" id="nama_peserta" placeholder="Masukkan nama peserta...">
+            </div>
+
+            <div class="banner-skala">
+                <span><span class="badge-number bg-cukup">1</span>60-70 Cukup</span>
+                <span><span class="badge-number bg-baik">2</span>71-85 Baik</span>
