@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Scoring Lomba Kostum - PetroChina</title>
     <style>
-        /* Light Theme - Sharp & Rich Pastel Palette */
+        /* Light Theme - Red Gradient & Rich Pastel Palette */
         :root {
-            --bg-color: #f1f5f9;
+            /* Background Red Gradient: Terang di atas ke agak gelap di bawah */
+            --bg-gradient: linear-gradient(180deg, #fef2f2 0%, #fca5a5 50%, #ef4444 100%);
             --card-bg: #ffffff;
-            --card-border: #cbd5e1;
+            --card-border: #fca5a5;
             --text-main: #1e293b;
             --text-sub: #64748b;
             
@@ -34,9 +35,11 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            background-color: var(--bg-color); 
+            background: var(--bg-gradient); 
+            background-attachment: fixed;
+            min-height: 100vh;
             color: var(--text-main); 
-            padding: 12px 10px;
+            padding: 16px 10px;
             -webkit-tap-highlight-color: transparent;
         }
         
@@ -46,13 +49,13 @@
             background: var(--card-bg); 
             padding: 16px; 
             border-radius: 16px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.15); 
             border: 1px solid var(--card-border);
         }
         
         h1 { 
             font-size: 1.35rem; 
-            background: linear-gradient(135deg, #0284c7, #6d28d9);
+            background: linear-gradient(135deg, #dc2626, #991b1b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-align: center; 
@@ -63,7 +66,7 @@
         .subtitle {
             text-align: center;
             font-size: 0.82rem;
-            color: #4f46e5;
+            color: #b91c1c;
             margin-bottom: 16px;
             font-weight: 700;
         }
@@ -72,7 +75,7 @@
             font-size: 1.05rem; 
             color: #1e293b; 
             margin: 18px 0 10px 0; 
-            border-bottom: 2px solid #e2e8f0; 
+            border-bottom: 2px solid #fecdd3; 
             padding-bottom: 6px;
             display: flex;
             align-items: center;
@@ -97,12 +100,12 @@
             font-weight: 600;
         }
         select:focus { 
-            border-color: #0284c7; 
-            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2); 
+            border-color: #dc2626; 
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2); 
             background-color: #ffffff;
         }
         
-        /* Slider Card Styling - Sharper Pastel */
+        /* Slider Card Styling */
         .slider-card {
             padding: 12px 14px;
             border-radius: 12px;
@@ -209,7 +212,7 @@
         .btn { 
             display: block;
             width: 100%; 
-            background: linear-gradient(135deg, #0284c7, #6366f1); 
+            background: linear-gradient(135deg, #ef4444, #b91c1c); 
             color: #ffffff; 
             padding: 12px; 
             border: none; 
@@ -218,15 +221,15 @@
             font-size: 0.95rem; 
             font-weight: 700;
             margin-top: 14px;
-            box-shadow: 0 3px 10px rgba(2, 132, 199, 0.25);
+            box-shadow: 0 3px 10px rgba(239, 68, 68, 0.3);
             text-align: center;
         }
         .btn:active { transform: translateY(1px); opacity: 0.95; }
         
         .btn-secondary {
             background: #ffffff;
-            color: #0284c7;
-            border: 1.5px solid #0284c7;
+            color: #dc2626;
+            border: 1.5px solid #dc2626;
             font-size: 0.85rem;
             padding: 8px;
             font-weight: 700;
@@ -235,7 +238,7 @@
         
         .btn-danger {
             background: #fef2f2;
-            color: #dc2626;
+            color: #991b1b;
             border: 1.5px solid #fca5a5;
             font-size: 0.8rem;
             padding: 8px;
@@ -249,7 +252,7 @@
             margin-top: 10px;
         }
         
-        /* Table Styling - Fitted Without Clipping */
+        /* Table Styling */
         .table-responsive {
             width: 100%;
             overflow-x: hidden;
@@ -274,8 +277,8 @@
         }
         
         th { 
-            background-color: #f1f5f9; 
-            color: #334155; 
+            background-color: #fff1f2; 
+            color: #881337; 
             font-weight: 800; 
             font-size: 0.73rem;
             white-space: nowrap;
@@ -283,10 +286,10 @@
         
         td { color: #0f172a; }
         td.text-left { text-align: left; padding-left: 6px; }
-        tr:nth-child(even) { background-color: #f8fafc; }
+        tr:nth-child(even) { background-color: #fff8f8; }
         
         .rank { font-weight: 800; color: #d97706; }
-        .total-score { font-weight: 800; color: #0284c7; font-size: 0.82rem; }
+        .total-score { font-weight: 800; color: #dc2626; font-size: 0.82rem; }
         
         .empty-row {
             color: #94a3b8;
@@ -306,7 +309,7 @@
 
 <div class="container">
     <h1>Scoring Juri Lomba Kostum</h1>
-    <div class="subtitle">Petrochina Team Building 2026</div>
+    <div class="subtitle">PetroChina Team Building 2026</div>
     
     <!-- Input Juri -->
     <div class="form-group">
@@ -531,7 +534,6 @@
         const tbody = document.getElementById("tabelSkor");
         tbody.innerHTML = "";
 
-        // Filter hanya peserta yang sudah memiliki nilai minimal dari 1 juri
         let terisi = skorPeserta.filter(p => hitungRataTotal(p) > 0);
 
         if (terisi.length === 0) {
@@ -552,7 +554,6 @@
             return a.noUrut - b.noUrut;
         });
 
-        // Maksimal Top 10
         let top10 = diurutkan.slice(0, 10);
 
         top10.forEach((p, index) => {
@@ -597,7 +598,7 @@
         const encodedUri = encodeURI(csvContent);
         const link = document.createElement("a");
         link.setAttribute("href", encodedUri);
-        link.setAttribute("download", `Rekap_Lengkap_Petrochina_TeamBuilding_2026.csv`);
+        link.setAttribute("download", `Rekap_Lengkap_PetroChina_TeamBuilding_2026.csv`);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
