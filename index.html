@@ -5,34 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Scoring Lomba Kostum - PetroChina</title>
     <style>
-        /* Light Theme - Calm, Relax & Soft Pastel Palette */
+        /* Light Theme - Sharp & Rich Pastel Palette */
         :root {
-            --bg-color: #f4f6f8;
+            --bg-color: #f1f5f9;
             --card-bg: #ffffff;
-            --card-border: #e2e8f0;
-            --text-main: #2d3748;
-            --text-sub: #718096;
+            --card-border: #cbd5e1;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
             
-            /* Calming Pastel Accent Colors */
-            --pastel-blue-bg: #f0f7ff;
-            --pastel-blue-border: #bae6fd;
+            /* Sharper & Richer Pastel Accent Colors */
+            --pastel-blue-bg: #e0f2fe;
+            --pastel-blue-border: #38bdf8;
             --pastel-blue-text: #0369a1;
             
-            --pastel-purple-bg: #faf5ff;
-            --pastel-purple-border: #e9d5ff;
+            --pastel-purple-bg: #f3e8ff;
+            --pastel-purple-border: #c084fc;
             --pastel-purple-text: #6b21a8;
 
-            --pastel-amber-bg: #fffbeb;
-            --pastel-amber-border: #fef3c7;
+            --pastel-amber-bg: #fef3c7;
+            --pastel-amber-border: #f59e0b;
             --pastel-amber-text: #b45309;
 
-            --pastel-indigo-bg: #f5f3ff;
-            --pastel-indigo-border: #ddd6fe;
-            --pastel-indigo-text: #4338ca;
-            
-            --pastel-green-bg: #f0fdf4;
-            --pastel-green-border: #bbf7d0;
-            --pastel-green-text: #15803d;
+            --pastel-indigo-bg: #e0e7ff;
+            --pastel-indigo-border: #818cf8;
+            --pastel-indigo-text: #3730a3;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,135 +36,131 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             background-color: var(--bg-color); 
             color: var(--text-main); 
-            padding: 15px;
+            padding: 12px 10px;
             -webkit-tap-highlight-color: transparent;
         }
         
         .container { 
-            max-width: 650px; 
+            max-width: 600px; 
             margin: auto; 
             background: var(--card-bg); 
-            padding: 24px; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 25px rgba(149, 157, 165, 0.1); 
+            padding: 16px; 
+            border-radius: 16px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06); 
             border: 1px solid var(--card-border);
         }
         
         h1 { 
-            font-size: 1.5rem; 
-            background: linear-gradient(135deg, #0284c7, #7c3aed);
+            font-size: 1.35rem; 
+            background: linear-gradient(135deg, #0284c7, #6d28d9);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-align: center; 
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             font-weight: 800;
-            letter-spacing: -0.3px;
         }
         
         .subtitle {
             text-align: center;
-            font-size: 0.9rem;
-            color: #6366f1;
-            margin-bottom: 22px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            font-size: 0.82rem;
+            color: #4f46e5;
+            margin-bottom: 16px;
+            font-weight: 700;
         }
         
         h2 { 
-            font-size: 1.1rem; 
-            color: #334155; 
-            margin: 24px 0 14px 0; 
-            border-bottom: 2px solid #f1f5f9; 
-            padding-bottom: 8px;
+            font-size: 1.05rem; 
+            color: #1e293b; 
+            margin: 18px 0 10px 0; 
+            border-bottom: 2px solid #e2e8f0; 
+            padding-bottom: 6px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         
         /* Form & Select inputs */
-        .form-group { margin-bottom: 16px; }
-        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; color: #475569; }
+        .form-group { margin-bottom: 12px; }
+        label { display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.85rem; color: #334155; }
         
         select { 
             width: 100%; 
-            padding: 12px 14px; 
-            font-size: 15px;
+            padding: 10px 12px; 
+            font-size: 14px;
             background-color: #f8fafc; 
-            border: 1px solid #cbd5e1; 
-            border-radius: 12px; 
-            color: #1e293b;
+            border: 1px solid #94a3b8; 
+            border-radius: 10px; 
+            color: #0f172a;
             outline: none;
             transition: all 0.2s ease;
             -webkit-appearance: none;
-            font-weight: 500;
+            font-weight: 600;
         }
         select:focus { 
-            border-color: #38bdf8; 
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2); 
+            border-color: #0284c7; 
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2); 
             background-color: #ffffff;
         }
         
-        /* Slider Card Styling - Soft Pastel Colors */
+        /* Slider Card Styling - Sharper Pastel */
         .slider-card {
-            padding: 16px;
-            border-radius: 14px;
-            margin-bottom: 16px;
-            transition: transform 0.15s ease;
+            padding: 12px 14px;
+            border-radius: 12px;
+            margin-bottom: 12px;
         }
-        .slider-card:active { transform: scale(0.995); }
 
         .card-kreativitas {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 1px solid var(--pastel-blue-border);
+            background: var(--pastel-blue-bg);
+            border: 1.5px solid var(--pastel-blue-border);
         }
         .card-pd {
-            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
-            border: 1px solid var(--pastel-purple-border);
+            background: var(--pastel-purple-bg);
+            border: 1.5px solid var(--pastel-purple-border);
         }
         .card-tema {
-            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-            border: 1px solid #fde68a;
+            background: var(--pastel-amber-bg);
+            border: 1.5px solid var(--pastel-amber-border);
         }
         
         .slider-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
         
         .slider-title {
-            font-weight: 700;
-            font-size: 0.95rem;
+            font-weight: 800;
+            font-size: 0.9rem;
         }
         .card-kreativitas .slider-title { color: var(--pastel-blue-text); }
         .card-pd .slider-title { color: var(--pastel-purple-text); }
         .card-tema .slider-title { color: var(--pastel-amber-text); }
         
         .slider-value {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 800;
-            padding: 4px 14px;
-            border-radius: 10px;
-            min-width: 55px;
+            padding: 2px 10px;
+            border-radius: 8px;
+            min-width: 48px;
             text-align: center;
             background: #ffffff;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
-        .card-kreativitas .slider-value { color: #0284c7; border: 1px solid var(--pastel-blue-border); }
-        .card-pd .slider-value { color: #7c3aed; border: 1px solid var(--pastel-purple-border); }
-        .card-tema .slider-value { color: #d97706; border: 1px solid #fde68a; }
+        .card-kreativitas .slider-value { color: var(--pastel-blue-text); border: 1px solid var(--pastel-blue-border); }
+        .card-pd .slider-value { color: var(--pastel-purple-text); border: 1px solid var(--pastel-purple-border); }
+        .card-tema .slider-value { color: var(--pastel-amber-text); border: 1px solid var(--pastel-amber-border); }
 
         .slider-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .slider-container span {
-            font-size: 0.8rem;
-            color: #94a3b8;
-            font-weight: 700;
+            font-size: 0.75rem;
+            color: #64748b;
+            font-weight: 800;
         }
 
         input[type="range"] {
@@ -178,42 +170,38 @@
             border-radius: 6px;
             background: #ffffff;
             outline: none;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #cbd5e1;
         }
 
-        /* Custom Track Thumbs for Each Slider */
+        /* Custom Track Thumbs */
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-            transition: transform 0.1s ease;
-        }
-        input[type="range"]::-webkit-slider-thumb:active {
-            transform: scale(1.15);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        #skorKreativitas::-webkit-slider-thumb { background: #38bdf8; }
-        #skorPD::-webkit-slider-thumb { background: #c084fc; }
-        #skorTema::-webkit-slider-thumb { background: #fbbf24; }
+        #skorKreativitas::-webkit-slider-thumb { background: #0284c7; }
+        #skorPD::-webkit-slider-thumb { background: #9333ea; }
+        #skorTema::-webkit-slider-thumb { background: #d97706; }
 
-        #skorKreativitas::-moz-range-thumb { background: #38bdf8; border: none; width: 24px; height: 24px; border-radius: 50%; }
-        #skorPD::-moz-range-thumb { background: #c084fc; border: none; width: 24px; height: 24px; border-radius: 50%; }
-        #skorTema::-moz-range-thumb { background: #fbbf24; border: none; width: 24px; height: 24px; border-radius: 50%; }
+        #skorKreativitas::-moz-range-thumb { background: #0284c7; border: none; width: 22px; height: 22px; border-radius: 50%; }
+        #skorPD::-moz-range-thumb { background: #9333ea; border: none; width: 22px; height: 22px; border-radius: 50%; }
+        #skorTema::-moz-range-thumb { background: #d97706; border: none; width: 22px; height: 22px; border-radius: 50%; }
 
         /* Information Box */
         .criteria-box { 
             background: var(--pastel-indigo-bg); 
-            padding: 12px 16px; 
-            border: 1px solid var(--pastel-indigo-border);
-            margin-bottom: 20px; 
-            font-size: 0.83rem; 
-            border-radius: 12px;
-            line-height: 1.5;
-            color: #475569;
+            padding: 10px 12px; 
+            border: 1.5px solid var(--pastel-indigo-border);
+            margin-bottom: 14px; 
+            font-size: 0.78rem; 
+            border-radius: 10px;
+            line-height: 1.4;
+            color: #1e1b4b;
         }
         .criteria-box strong { color: var(--pastel-indigo-text); }
         
@@ -221,17 +209,16 @@
         .btn { 
             display: block;
             width: 100%; 
-            background: linear-gradient(135deg, #38bdf8, #818cf8); 
+            background: linear-gradient(135deg, #0284c7, #6366f1); 
             color: #ffffff; 
-            padding: 14px; 
+            padding: 12px; 
             border: none; 
-            border-radius: 12px; 
+            border-radius: 10px; 
             cursor: pointer; 
-            font-size: 1rem; 
+            font-size: 0.95rem; 
             font-weight: 700;
-            margin-top: 18px;
-            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
-            transition: all 0.2s;
+            margin-top: 14px;
+            box-shadow: 0 3px 10px rgba(2, 132, 199, 0.25);
             text-align: center;
         }
         .btn:active { transform: translateY(1px); opacity: 0.95; }
@@ -239,56 +226,71 @@
         .btn-secondary {
             background: #ffffff;
             color: #0284c7;
-            border: 1px solid #bae6fd;
-            font-size: 0.9rem;
-            padding: 10px;
-            font-weight: 600;
+            border: 1.5px solid #0284c7;
+            font-size: 0.85rem;
+            padding: 8px;
+            font-weight: 700;
             box-shadow: none;
         }
-        .btn-secondary:active { background: #f0f9ff; }
         
         .btn-danger {
             background: #fef2f2;
-            color: #ef4444;
-            border: 1px solid #fecaca;
-            font-size: 0.85rem;
-            padding: 10px;
-            margin-top: 24px;
-            font-weight: 600;
-            box-shadow: none;
+            color: #dc2626;
+            border: 1.5px solid #fca5a5;
+            font-size: 0.8rem;
+            padding: 8px;
+            margin-top: 18px;
+            font-weight: 700;
         }
-        .btn-danger:active { background: #fee2e2; }
         
         .button-group {
             display: flex;
-            gap: 10px;
-            margin-top: 12px;
+            gap: 8px;
+            margin-top: 10px;
         }
         
-        /* Table Styling */
+        /* Table Styling - Fitted to 1 Page Width */
         .table-responsive {
             width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin-top: 14px;
-            border-radius: 12px;
+            overflow-x: hidden; /* Disable horizontal scroll */
+            margin-top: 10px;
+            border-radius: 10px;
             border: 1px solid var(--card-border);
         }
         
-        table { width: 100%; border-collapse: collapse; min-width: 550px; font-size: 0.85rem; }
-        th, td { padding: 12px 10px; text-align: left; border-bottom: 1px solid #f1f5f9; }
-        th { background-color: #f8fafc; color: #475569; font-weight: 700; text-align: center; }
-        td { text-align: center; color: #334155; }
-        td.text-left { text-align: left; }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            table-layout: fixed; /* Force fix width layout */
+            font-size: 0.78rem; 
+        }
+        
+        th, td { 
+            padding: 7px 3px; 
+            text-align: center; 
+            border-bottom: 1px solid #e2e8f0; 
+            word-wrap: break-word;
+        }
+        
+        th { 
+            background-color: #f1f5f9; 
+            color: #334155; 
+            font-weight: 800; 
+            font-size: 0.75rem;
+        }
+        
+        td { color: #0f172a; }
+        td.text-left { text-align: left; padding-left: 5px; }
         tr:nth-child(even) { background-color: #f8fafc; }
+        
         .rank { font-weight: 800; color: #d97706; }
-        .total-score { font-weight: 800; color: #0284c7; font-size: 0.95rem; }
+        .total-score { font-weight: 800; color: #0284c7; font-size: 0.82rem; }
         
         /* Custom Select Arrow */
         .select-wrapper { position: relative; }
         .select-wrapper::after {
-            content: "▼"; font-size: 10px; color: #64748b;
-            position: absolute; right: 15px; top: 16px; pointer-events: none;
+            content: "▼"; font-size: 10px; color: #475569;
+            position: absolute; right: 12px; top: 14px; pointer-events: none;
         }
     </style>
 </head>
@@ -313,7 +315,7 @@
     <div class="criteria-box">
         <strong>Skala Penilaian Kategori (Kelipatan 5):</strong><br>
         60 - 75: Cukup | 80 - 85: Baik | 90 - 100: Istimewa<br>
-        <em>*Geser slider warna ke kanan/kiri untuk memilih nilai (60, 65, 70, dst.).</em>
+        <em>*Geser slider ke kanan/kiri untuk memilih nilai (60, 65, 70, dst.).</em>
     </div>
 
     <!-- Input Nilai Peserta -->
@@ -325,7 +327,7 @@
         </div>
     </div>
     
-    <!-- Slider 3 Kategori Penilaian (Pastel Soft) -->
+    <!-- Slider 3 Kategori Penilaian -->
     <div class="slider-card card-kreativitas">
         <div class="slider-header">
             <span class="slider-title">Kreativitas</span>
@@ -375,13 +377,13 @@
         <table>
             <thead>
                 <tr>
-                    <th style="width: 45px;">Rank</th>
-                    <th style="width: 40px;">No</th>
-                    <th style="text-align: left;">Nama Peserta</th>
-                    <th style="width: 60px;">Juri 1</th>
-                    <th style="width: 60px;">Juri 2</th>
-                    <th style="width: 60px;">Juri 3</th>
-                    <th style="width: 75px;">Rata-Rata</th>
+                    <th style="width: 8%;">Rk</th>
+                    <th style="width: 8%;">No</th>
+                    <th style="width: 44%; text-align: left; padding-left: 5px;">Nama Peserta</th>
+                    <th style="width: 10%;">J1</th>
+                    <th style="width: 10%;">J2</th>
+                    <th style="width: 10%;">J3</th>
+                    <th style="width: 10%;">Rata</th>
                 </tr>
             </thead>
             <tbody id="tabelSkor">
@@ -546,7 +548,7 @@
                 <td>${p.r1 > 0 ? p.r1.toFixed(1) : '-'}</td>
                 <td>${p.r2 > 0 ? p.r2.toFixed(1) : '-'}</td>
                 <td>${p.r3 > 0 ? p.r3.toFixed(1) : '-'}</td>
-                <td class="total-score">${p.totalRata > 0 ? p.totalRata.toFixed(2) : '-'}</td>
+                <td class="total-score">${p.totalRata > 0 ? p.totalRata.toFixed(1) : '-'}</td>
             `;
             tbody.appendChild(tr);
         });
