@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Scoring Lomba Kostum - PetroChina</title>
     <style>
-        /* CSS Murni - Dijamin Jalan Offline & Tidak Membuat Silau */
+        /* CSS Utama untuk Aplikasi Mobile Percetakan Ringan */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -16,10 +16,9 @@
         body {
             background-color: #f8fafc;
             color: #334155;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
         }
 
-        /* Header Gradasi Khas PetroChina */
         header {
             background: linear-gradient(135deg, #dc2626 0%, #f97316 50%, #f59e0b 100%);
             color: white;
@@ -44,7 +43,6 @@
             gap: 12px;
         }
 
-        /* Box Logo Tertanam */
         .logo-box {
             background: white;
             padding: 4px;
@@ -54,7 +52,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .logo-box img {
@@ -86,7 +83,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Layout Konten Utama */
         main {
             max-width: 480px;
             margin: 0 auto;
@@ -100,7 +96,6 @@
             margin-bottom: 16px;
             border: 1px solid #f1f5f9;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-            position: relative;
         }
 
         .card-accent {
@@ -135,7 +130,6 @@
             font-weight: 700;
             color: #475569;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         label {
@@ -145,10 +139,8 @@
             text-transform: uppercase;
             color: #64748b;
             margin-bottom: 6px;
-            letter-spacing: 0.3px;
         }
 
-        /* Form Input Spesifik HP */
         input[type="text"], select {
             width: 100%;
             height: 46px;
@@ -159,9 +151,6 @@
             color: #334155;
             background-color: #f8fafc;
             outline: none;
-            transition: all 0.2s;
-            -webkit-appearance: none;
-            appearance: none;
         }
 
         select {
@@ -174,10 +163,8 @@
         input:focus, select:focus {
             background-color: white;
             border-color: #f97316;
-            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
         }
 
-        /* Banner Skala Nilai */
         .banner-skala {
             background: linear-gradient(to right, #fffbeb, #ffedd5);
             border: 1px solid #fed7aa;
@@ -188,6 +175,7 @@
             font-size: 11px;
             font-weight: 600;
             color: #7c2d12;
+            margin-top: 16px;
             margin-bottom: 16px;
         }
 
@@ -224,7 +212,6 @@
             margin-bottom: 8px;
         }
 
-        /* Tombol Utama */
         button.btn-submit {
             width: 100%;
             height: 48px;
@@ -234,14 +221,9 @@
             border-radius: 12px;
             font-size: 14px;
             font-weight: 700;
-            letter-spacing: 0.3px;
             cursor: pointer;
             box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.2);
-            transition: opacity 0.2s;
-        }
-
-        button.btn-submit:active {
-            opacity: 0.9;
+            margin-top: 10px;
         }
 
         .flex-between {
@@ -262,7 +244,6 @@
             cursor: pointer;
         }
 
-        /* Tabel Rekap */
         .table-responsive {
             width: 100%;
             overflow-x: auto;
@@ -299,11 +280,10 @@
 </head>
 <body>
 
-    <!-- Header Colorful Offline-Safe -->
+    <!-- Header -->
     <header>
         <div class="header-container">
             <div class="header-left">
-                <!-- Logo PetroChina Format Base64 SVG (Tertanam Aman & Berwarna) -->
                 <div class="logo-box">
                     <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNNSA1MCBBIDQ1IDQ1IDAgMSAxIDk1IDUwIEEgNDUgNDUgMCAxIDEgNSA1MCBaIiBmaWxsPSIjZjU4YTE5Ii8+PHBhdGggZD0iTTUgNTAgQSA0NSA0NSAwIDAgMCA5NSA1MCBaIiBmaWxsPSIjYzAwMDAwIi8+PHBhdGggZD0iTTUwIDUgTDUwIDUwIE01MCA1IEwyNSA0NSBNNTAgNSBMMzcgNDUgTTUwIDUgTDYzIDQ1IE01MCA1IEw3NSA0NSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMiLz48L3N2Zz4=" alt="PetroChina">
                 </div>
@@ -323,7 +303,7 @@
             <input type="text" id="namaJuri" placeholder="Ketik nama Anda di sini...">
         </section>
 
-        <!-- Card Input Form -->
+        <!-- Card Input Form Utama -->
         <section class="card">
             <div class="card-title-area">
                 <div class="dot-amber"></div>
@@ -333,3 +313,15 @@
             <div style="margin-bottom: 16px;">
                 <label for="pilihPeserta">Pilih Peserta / Tim</label>
                 <select id="pilihPeserta">
+                    <option value="">-- Ketuk untuk memilih nama --</option>
+                    <option value="Peserta 01 - Budi">Peserta 01 - Budi</option>
+                    <option value="Peserta 02 - Sinta">Peserta 02 - Sinta</option>
+                    <option value="Peserta 03 - Andi">Peserta 03 - Andi</option>
+                    <option value="Peserta 04 - Rini">Peserta 04 - Rini</option>
+                    <option value="Peserta 05 - Doni">Peserta 05 - Doni</option>
+                </select>
+            </div>
+
+            <div class="banner-skala">
+                <span><span class="badge-number bg-cukup">1</span> Cukup</span>
+                <span><span class="badge-number bg-baik">2</span> Baik</span>
