@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Nilai Lomba Kostum Team Building</title>
+    <!-- Tailwind CSS untuk UI yang responsif dan modern -->
+    <script src="https://tailwindcss.com"></script>
+    <style>
+        /* Optimasi sentuhan di HP agar tidak mudah typo */
+        select, input, button {
+            min-height: 44px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 antialiased pb-10">
+
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white p-4 shadow-md sticky top-0 z-10 text-center">
+        <h1 class="text-lg font-bold">Scoring Lomba Kostum</h1>
+        <p class="text-xs text-indigo-200">Format Khusus HP (Skala 1-3)</p>
+    </header>
+
+    <main class="max-w-md mx-auto p-4 space-y-6">
+
+        <!-- Info Juri -->
+        <section class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+            <label class="block text-sm font-semibold text-gray-600 mb-1">Nama Juri:</label>
+            <input type="text" id="namaJuri" placeholder="Masukkan nama Anda..." class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none text-base">
+        </section>
+
+        <!-- Form Penilaian -->
+        <section class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-4">
+            <h2 class="text-base font-bold text-gray-700 border-b pb-2">Form Input Nilai</h2>
+            
+            <!-- Pilih Peserta -->
+            <div>
+                <label class="block text-sm font-semibold text-gray-600 mb-1">Pilih Peserta:</label>
+                <select id="pilihPeserta" class="w-full border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-indigo-500 text-base">
+                    <option value="">-- Pilih Nama / Tim --</option>
+                    <option value="Peserta 01 - Budi">Peserta 01 - Budi</option>
+                    <option value="Peserta 02 - Sinta">Peserta 02 - Sinta</option>
+                    <option value="Peserta 03 - Andi">Peserta 03 - Andi</option>
+                    <option value="Peserta 04 - Rini">Peserta 04 - Rini</option>
+                    <option value="Peserta 05 - Doni">Peserta 05 - Doni</option>
+                </select>
+            </div>
+
+            <!-- Panduan Skala Nilai -->
+            <div class="bg-indigo-50 p-2 rounded-lg text-xs text-indigo-800 flex justify-between">
+                <span><strong>1</strong> = Cukup</span>
+                <span><strong>2</strong> = Baik</span>
+                <span><strong>3</strong> = Sangat Baik</span>
+            </div>
+
+            <!-- Kriteria Penilaian -->
+            <div class="space-y-3">
+                <!-- Kriteria 1 -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">1. Kesesuaian Tema (Casual/Sopan/Rapi)</label>
+                    <select id="kriteria1" class="w-full border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-indigo-500 text-base font-semibold">
+                        <option value="1">1 (Cukup)</option>
+                        <option value="2" selected>2 (Baik)</option>
+                        <option value="3">3 (Sangat Baik)</option>
+                    </select>
+                </div>
+
+                <!-- Kriteria 2 -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">2. Kreativitas & Orisinalitas</label>
+                    <select id="kriteria2" class="w-full border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-indigo-500 text-base font-semibold">
+                        <option value="1">1 (Cukup)</option>
+                        <option value="2" selected>2 (Baik)</option>
+                        <option value="3">3 (Sangat Baik)</option>
+                    </select>
+                </div>
+
+                <!-- Kriteria 3 -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">3. Pembawaan & Percaya Diri</label>
+                    <select id="kriteria3" class="w-full border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-indigo-500 text-base font-semibold">
+                        <option value="1">1 (Cukup)</option>
+                        <option value="2" selected>2 (Baik)</option>
+                        <option value="3">3 (Sangat Baik)</option>
+                    </select>
+                </div>
+
+                <!-- Kriteria 4 -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">4. Detail & Estetika Kerapian</label>
+                    <select id="kriteria4" class="w-full border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-indigo-500 text-base font-semibold">
+                        <option value="1">1 (Cukup)</option>
+                        <option value="2" selected>2 (Baik)</option>
+                        <option value="3">3 (Sangat Baik)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Tombol Simpan -->
+            <button onclick="simpanNilai()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold p-3 rounded-xl transition duration-200 mt-2 shadow-md">
+                Simpan & Rekap Nilai
+            </button>
+        </section>
+
+        <!-- Hasil Rekap Sementara di HP Juri -->
+        <section class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+            <div class="flex justify-between items-center border-b pb-2 mb-3">
+                <h2 class="text-base font-bold text-gray-700">Rekap Nilai Anda</h2>
+                <button onclick="clearData()" class="text-xs text-red-500 hover:text-red-700 font-medium">Hapus Semua</button>
+            </div>
+            
+            <div id="wrapperTabel" class="overflow-x-auto hidden">
+                <table class="w-full text-sm text-left">
+                    <thead>
+                        <tr class="text-xs text-gray-400 border-b">
+                            <th class="pb-2 font-medium">Peserta</th>
+                            <th class="pb-2 font-medium text-center">Detail (1-4)</th>
+                            <th class="pb-2 font-medium text-right">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyTabel" class="divide-y divide-gray-100">
+                        <!-- Data masuk di sini via JS -->
+                    </tbody>
+                </table>
+            </div>
+            <p id="pesanKosong" class="text-sm text-gray-400 text-center py-4">Belum ada nilai yang disimpan.</p>
+        </section>
+
+    </main>
+
+    <script>
+        // Memuat data lama yang tersimpan di HP juri jika halaman tidak sengaja terefresh
+        document.addEventListener("DOMContentLoaded", () => {
+            tampilkanData();
+        });
+
+        function simpanNilai() {
+            const namaJuri = document.getElementById('namaJuri').value.trim();
+            const peserta = document.getElementById('pilihPeserta').value;
+            
+            if (!namaJuri) {
+                alert("Harap isi nama Juri terlebih dahulu!");
+                return;
+            }
+            if (!peserta) {
+                alert("Harap pilih nama peserta terlebih dahulu!");
+                return;
+            }
+
+            const k1 = parseInt(document.getElementById('kriteria1').value);
+            const k2 = parseInt(document.getElementById('kriteria2').value);
+            const k3 = parseInt(document.getElementById('kriteria3').value);
+            const k4 = parseInt(document.getElementById('kriteria4').value);
+            const total = k1 + k2 + k3 + k4;
+
+            let dataNilai = JSON.parse(localStorage.getItem('rekapLombaKostum')) || [];
+            
+            // Cek jika peserta sudah pernah dinilai oleh juri ini, maka akan ditimpa (update)
+            const indexAda = dataNilai.findIndex(item => item.peserta === peserta);
+            if (indexAda > -1) {
+                dataNilai[indexAda] = { peserta, k1, k2, k3, k4, total };
+            } else {
+                dataNilai.push({ peserta, k1, k2, k3, k4, total });
+            }
+
+            localStorage.setItem('rekapLombaKostum', JSON.stringify(dataNilai));
+            tampilkanData();
+            
+            // Reset dropdown peserta setelah input berhasil
+            document.getElementById('pilihPeserta').value = "";
+            alert(`Nilai untuk ${peserta} berhasil disimpan!`);
+        }
+
+        function tampilkanData() {
+            const dataNilai = JSON.parse(localStorage.getItem('rekapLombaKostum')) || [];
+            const bodyTabel = document.getElementById('bodyTabel');
+            const wrapperTabel = document.getElementById('wrapperTabel');
+            const pesanKosong = document.getElementById('pesanKosong');
+
+            bodyTabel.innerHTML = "";
+
+            if (dataNilai.length === 0) {
+                wrapperTabel.classList.add('hidden');
+                pesanKosong.classList.remove('hidden');
+                return;
+            }
+
+            wrapperTabel.classList.remove('hidden');
+            pesanKosong.classList.add('hidden');
+
+            dataNilai.forEach(item => {
+                const row = `
+                    <tr class="text-gray-700">
+                        <td class="py-2 font-medium">${item.peserta}</td>
+                        <td class="py-2 text-center text-xs text-gray-500">${item.k1}, ${item.k2}, ${item.k3}, ${item.k4}</td>
+                        <td class="py-2 text-right font-bold text-indigo-600 text-base">${item.total}</td>
+                    </tr>
+                `;
+                bodyTabel.innerHTML += row;
+            });
+        }
+
+        function clearData() {
