@@ -5,21 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Scoring Lomba Kostum - PetroChina</title>
     <style>
-        /* Modern Dark Theme - Colorful & Comfortable for Night Use */
+        /* Light Theme - Calm, Relax & Soft Pastel Palette */
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --card-border: #30363d;
-            --text-main: #f0f6fc;
-            --text-sub: #8b949e;
+            --bg-color: #f4f6f8;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --text-main: #2d3748;
+            --text-sub: #718096;
             
-            /* Accent Colors (Soft Glow / Night Friendly) */
-            --accent-green: #3fb950;
-            --accent-cyan: #38bdf8;
-            --accent-purple: #c084fc;
-            --accent-amber: #fbbf24;
-            --accent-rose: #f43f5e;
-            --accent-indigo: #818cf8;
+            /* Calming Pastel Accent Colors */
+            --pastel-blue-bg: #f0f7ff;
+            --pastel-blue-border: #bae6fd;
+            --pastel-blue-text: #0369a1;
+            
+            --pastel-purple-bg: #faf5ff;
+            --pastel-purple-border: #e9d5ff;
+            --pastel-purple-text: #6b21a8;
+
+            --pastel-amber-bg: #fffbeb;
+            --pastel-amber-border: #fef3c7;
+            --pastel-amber-text: #b45309;
+
+            --pastel-indigo-bg: #f5f3ff;
+            --pastel-indigo-border: #ddd6fe;
+            --pastel-indigo-text: #4338ca;
+            
+            --pastel-green-bg: #f0fdf4;
+            --pastel-green-border: #bbf7d0;
+            --pastel-green-text: #15803d;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,37 +48,37 @@
             max-width: 650px; 
             margin: auto; 
             background: var(--card-bg); 
-            padding: 22px; 
-            border-radius: 16px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
+            padding: 24px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 25px rgba(149, 157, 165, 0.1); 
             border: 1px solid var(--card-border);
         }
         
         h1 { 
             font-size: 1.5rem; 
-            background: linear-gradient(135deg, #38bdf8, #c084fc);
+            background: linear-gradient(135deg, #0284c7, #7c3aed);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-align: center; 
             margin-bottom: 4px;
             font-weight: 800;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
         }
         
         .subtitle {
             text-align: center;
             font-size: 0.9rem;
-            color: #a5b4fc;
+            color: #6366f1;
             margin-bottom: 22px;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
         
         h2 { 
-            font-size: 1.15rem; 
-            color: #38bdf8; 
-            margin: 24px 0 12px 0; 
-            border-bottom: 1px solid var(--card-border); 
+            font-size: 1.1rem; 
+            color: #334155; 
+            margin: 24px 0 14px 0; 
+            border-bottom: 2px solid #f1f5f9; 
             padding-bottom: 8px;
             display: flex;
             align-items: center;
@@ -74,16 +87,16 @@
         
         /* Form & Select inputs */
         .form-group { margin-bottom: 16px; }
-        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; color: #cbd5e1; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; color: #475569; }
         
         select { 
             width: 100%; 
             padding: 12px 14px; 
             font-size: 15px;
-            background-color: #21262d; 
-            border: 1px solid #363b42; 
-            border-radius: 10px; 
-            color: #f0f6fc;
+            background-color: #f8fafc; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 12px; 
+            color: #1e293b;
             outline: none;
             transition: all 0.2s ease;
             -webkit-appearance: none;
@@ -91,60 +104,60 @@
         }
         select:focus { 
             border-color: #38bdf8; 
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25); 
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2); 
+            background-color: #ffffff;
         }
         
-        /* Slider Card Styling - Vibrant Kategori Individual */
+        /* Slider Card Styling - Soft Pastel Colors */
         .slider-card {
-            padding: 14px 16px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.08);
-            margin-bottom: 14px;
+            padding: 16px;
+            border-radius: 14px;
+            margin-bottom: 16px;
             transition: transform 0.15s ease;
         }
         .slider-card:active { transform: scale(0.995); }
 
-        /* Color variations for sliders */
         .card-kreativitas {
-            background: linear-gradient(145deg, rgba(56, 189, 248, 0.08), rgba(15, 23, 42, 0.6));
-            border-left: 4px solid var(--accent-cyan);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid var(--pastel-blue-border);
         }
         .card-pd {
-            background: linear-gradient(145deg, rgba(192, 132, 252, 0.08), rgba(15, 23, 42, 0.6));
-            border-left: 4px solid var(--accent-purple);
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            border: 1px solid var(--pastel-purple-border);
         }
-        .card-kerapian {
-            background: linear-gradient(145deg, rgba(251, 191, 36, 0.08), rgba(15, 23, 42, 0.6));
-            border-left: 4px solid var(--accent-amber);
+        .card-tema {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border: 1px solid #fde68a;
         }
         
         .slider-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .slider-title {
             font-weight: 700;
             font-size: 0.95rem;
         }
-        .card-kreativitas .slider-title { color: #7dd3fc; }
-        .card-pd .slider-title { color: #e9d5ff; }
-        .card-kerapian .slider-title { color: #fde68a; }
+        .card-kreativitas .slider-title { color: var(--pastel-blue-text); }
+        .card-pd .slider-title { color: var(--pastel-purple-text); }
+        .card-tema .slider-title { color: var(--pastel-amber-text); }
         
         .slider-value {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 800;
-            padding: 3px 12px;
-            border-radius: 8px;
+            padding: 4px 14px;
+            border-radius: 10px;
             min-width: 55px;
             text-align: center;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+            background: #ffffff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
         }
-        .card-kreativitas .slider-value { color: var(--accent-cyan); background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); }
-        .card-pd .slider-value { color: var(--accent-purple); background: rgba(192, 132, 252, 0.15); border: 1px solid rgba(192, 132, 252, 0.4); }
-        .card-kerapian .slider-value { color: var(--accent-amber); background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.4); }
+        .card-kreativitas .slider-value { color: #0284c7; border: 1px solid var(--pastel-blue-border); }
+        .card-pd .slider-value { color: #7c3aed; border: 1px solid var(--pastel-purple-border); }
+        .card-tema .slider-value { color: #d97706; border: 1px solid #fde68a; }
 
         .slider-container {
             display: flex;
@@ -154,95 +167,97 @@
 
         .slider-container span {
             font-size: 0.8rem;
-            color: #64748b;
+            color: #94a3b8;
             font-weight: 700;
         }
 
         input[type="range"] {
             -webkit-appearance: none;
             width: 100%;
-            height: 10px;
+            height: 8px;
             border-radius: 6px;
-            background: #21262d;
+            background: #ffffff;
             outline: none;
-            border: 1px solid #30363d;
+            border: 1px solid #e2e8f0;
         }
 
         /* Custom Track Thumbs for Each Slider */
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 0 12px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
             transition: transform 0.1s ease;
         }
         input[type="range"]::-webkit-slider-thumb:active {
             transform: scale(1.15);
         }
 
-        #skorKreativitas::-webkit-slider-thumb { background: var(--accent-cyan); box-shadow: 0 0 10px rgba(56, 189, 248, 0.6); }
-        #skorPD::-webkit-slider-thumb { background: var(--accent-purple); box-shadow: 0 0 10px rgba(192, 132, 252, 0.6); }
-        #skorKerapian::-webkit-slider-thumb { background: var(--accent-amber); box-shadow: 0 0 10px rgba(251, 191, 36, 0.6); }
+        #skorKreativitas::-webkit-slider-thumb { background: #38bdf8; }
+        #skorPD::-webkit-slider-thumb { background: #c084fc; }
+        #skorTema::-webkit-slider-thumb { background: #fbbf24; }
 
-        #skorKreativitas::-moz-range-thumb { background: var(--accent-cyan); border: none; width: 26px; height: 26px; border-radius: 50%; }
-        #skorPD::-moz-range-thumb { background: var(--accent-purple); border: none; width: 26px; height: 26px; border-radius: 50%; }
-        #skorKerapian::-moz-range-thumb { background: var(--accent-amber); border: none; width: 26px; height: 26px; border-radius: 50%; }
+        #skorKreativitas::-moz-range-thumb { background: #38bdf8; border: none; width: 24px; height: 24px; border-radius: 50%; }
+        #skorPD::-moz-range-thumb { background: #c084fc; border: none; width: 24px; height: 24px; border-radius: 50%; }
+        #skorTema::-moz-range-thumb { background: #fbbf24; border: none; width: 24px; height: 24px; border-radius: 50%; }
 
         /* Information Box */
         .criteria-box { 
-            background: rgba(129, 140, 248, 0.08); 
-            padding: 12px 14px; 
-            border-left: 4px solid var(--accent-indigo); 
-            margin-bottom: 18px; 
+            background: var(--pastel-indigo-bg); 
+            padding: 12px 16px; 
+            border: 1px solid var(--pastel-indigo-border);
+            margin-bottom: 20px; 
             font-size: 0.83rem; 
-            border-radius: 0 10px 10px 0;
+            border-radius: 12px;
             line-height: 1.5;
-            color: #cbd5e1;
+            color: #475569;
         }
-        .criteria-box strong { color: #a5b4fc; }
+        .criteria-box strong { color: var(--pastel-indigo-text); }
         
         /* Buttons */
         .btn { 
             display: block;
             width: 100%; 
             background: linear-gradient(135deg, #38bdf8, #818cf8); 
-            color: #0f172a; 
+            color: #ffffff; 
             padding: 14px; 
             border: none; 
-            border-radius: 10px; 
+            border-radius: 12px; 
             cursor: pointer; 
             font-size: 1rem; 
-            font-weight: 800;
+            font-weight: 700;
             margin-top: 18px;
-            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
             transition: all 0.2s;
             text-align: center;
         }
-        .btn:active { transform: translateY(1px); filter: brightness(0.9); }
+        .btn:active { transform: translateY(1px); opacity: 0.95; }
         
         .btn-secondary {
-            background: #21262d;
-            color: #38bdf8;
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            background: #ffffff;
+            color: #0284c7;
+            border: 1px solid #bae6fd;
             font-size: 0.9rem;
             padding: 10px;
             font-weight: 600;
+            box-shadow: none;
         }
-        .btn-secondary:active { background: #2d333b; }
+        .btn-secondary:active { background: #f0f9ff; }
         
         .btn-danger {
-            background: rgba(244, 63, 94, 0.12);
-            color: #fda4af;
-            border: 1px solid rgba(244, 63, 94, 0.4);
+            background: #fef2f2;
+            color: #ef4444;
+            border: 1px solid #fecaca;
             font-size: 0.85rem;
             padding: 10px;
             margin-top: 24px;
             font-weight: 600;
+            box-shadow: none;
         }
-        .btn-danger:active { background: rgba(244, 63, 94, 0.25); }
+        .btn-danger:active { background: #fee2e2; }
         
         .button-group {
             display: flex;
@@ -256,23 +271,23 @@
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             margin-top: 14px;
-            border-radius: 10px;
+            border-radius: 12px;
             border: 1px solid var(--card-border);
         }
         
         table { width: 100%; border-collapse: collapse; min-width: 550px; font-size: 0.85rem; }
-        th, td { padding: 11px 8px; text-align: left; border-bottom: 1px solid #21262d; }
-        th { background-color: #1c2128; color: #a5b4fc; font-weight: 700; text-align: center; }
-        td { text-align: center; color: #cbd5e1; }
+        th, td { padding: 12px 10px; text-align: left; border-bottom: 1px solid #f1f5f9; }
+        th { background-color: #f8fafc; color: #475569; font-weight: 700; text-align: center; }
+        td { text-align: center; color: #334155; }
         td.text-left { text-align: left; }
-        tr:nth-child(even) { background-color: rgba(255,255,255,0.02); }
-        .rank { font-weight: 800; color: var(--accent-amber); }
-        .total-score { font-weight: 800; color: var(--accent-cyan); font-size: 0.95rem; }
+        tr:nth-child(even) { background-color: #f8fafc; }
+        .rank { font-weight: 800; color: #d97706; }
+        .total-score { font-weight: 800; color: #0284c7; font-size: 0.95rem; }
         
         /* Custom Select Arrow */
         .select-wrapper { position: relative; }
         .select-wrapper::after {
-            content: "▼"; font-size: 10px; color: #38bdf8;
+            content: "▼"; font-size: 10px; color: #64748b;
             position: absolute; right: 15px; top: 16px; pointer-events: none;
         }
     </style>
@@ -310,7 +325,7 @@
         </div>
     </div>
     
-    <!-- Slider 3 Kategori Penilaian (Colorful) -->
+    <!-- Slider 3 Kategori Penilaian (Pastel Soft) -->
     <div class="slider-card card-kreativitas">
         <div class="slider-header">
             <span class="slider-title">Kreativitas</span>
@@ -335,14 +350,14 @@
         </div>
     </div>
 
-    <div class="slider-card card-kerapian">
+    <div class="slider-card card-tema">
         <div class="slider-header">
-            <span class="slider-title">Kerapian</span>
-            <span class="slider-value" id="valKerapian">75</span>
+            <span class="slider-title">Kesesuaian Tema</span>
+            <span class="slider-value" id="valTema">75</span>
         </div>
         <div class="slider-container">
             <span>60</span>
-            <input type="range" id="skorKerapian" min="60" max="100" step="5" value="75" oninput="updateVal('Kerapian')">
+            <input type="range" id="skorTema" min="60" max="100" step="5" value="75" oninput="updateVal('Tema')">
             <span>100</span>
         </div>
     </div>
@@ -395,7 +410,7 @@
     let skorPeserta = [];
 
     function init() {
-        const simpananData = localStorage.getItem("petrochina_skor_v5");
+        const simpananData = localStorage.getItem("petrochina_skor_v6");
 
         if (simpananData) {
             skorPeserta = JSON.parse(simpananData);
@@ -404,9 +419,9 @@
                 noUrut: index + 1,
                 nama: nama,
                 juri: {
-                    1: { kreativitas: 0, pd: 0, kerapian: 0 },
-                    2: { kreativitas: 0, pd: 0, kerapian: 0 },
-                    3: { kreativitas: 0, pd: 0, kerapian: 0 }
+                    1: { kreativitas: 0, pd: 0, tema: 0 },
+                    2: { kreativitas: 0, pd: 0, tema: 0 },
+                    3: { kreativitas: 0, pd: 0, tema: 0 }
                 }
             }));
         }
@@ -445,8 +460,8 @@
     }
 
     function hitungRataJuri(dataJuri) {
-        if (!dataJuri || (dataJuri.kreativitas === 0 && dataJuri.pd === 0 && dataJuri.kerapian === 0)) return 0;
-        return (dataJuri.kreativitas + dataJuri.pd + dataJuri.kerapian) / 3;
+        if (!dataJuri || (dataJuri.kreativitas === 0 && dataJuri.pd === 0 && dataJuri.tema === 0)) return 0;
+        return (dataJuri.kreativitas + dataJuri.pd + dataJuri.tema) / 3;
     }
 
     function hitungRataTotal(peserta) {
@@ -471,7 +486,7 @@
             const data = peserta.juri[idJuri];
             setSliderVal("Kreativitas", data.kreativitas);
             setSliderVal("PD", data.pd);
-            setSliderVal("Kerapian", data.kerapian);
+            setSliderVal("Tema", data.tema || data.kerapian || 0);
         }
     }
 
@@ -481,18 +496,18 @@
         
         const krea = parseInt(document.getElementById("skorKreativitas").value);
         const pd = parseInt(document.getElementById("skorPD").value);
-        const rapi = parseInt(document.getElementById("skorKerapian").value);
+        const tema = parseInt(document.getElementById("skorTema").value);
 
         let peserta = skorPeserta.find(p => p.noUrut === idPeserta);
         if (peserta) {
             peserta.juri[idJuri] = {
                 kreativitas: krea,
                 pd: pd,
-                kerapian: rapi
+                tema: tema
             };
         }
 
-        localStorage.setItem("petrochina_skor_v5", JSON.stringify(skorPeserta));
+        localStorage.setItem("petrochina_skor_v6", JSON.stringify(skorPeserta));
 
         tampilkanLeaderboard();
         
@@ -539,7 +554,7 @@
 
     function exportKeCSV() {
         let csvContent = "data:text/csv;charset=utf-8,";
-        csvContent += "Rank,No Urut,Nama Peserta,Juri 1 (Kreativitas),Juri 1 (PD),Juri 1 (Kerapian),Rata Juri 1,Juri 2 (Kreativitas),Juri 2 (PD),Juri 2 (Kerapian),Rata Juri 2,Juri 3 (Kreativitas),Juri 3 (PD),Juri 3 (Kerapian),Rata Juri 3,Rata Total 3 Juri\n";
+        csvContent += "Rank,No Urut,Nama Peserta,Juri 1 (Kreativitas),Juri 1 (PD),Juri 1 (Kesesuaian Tema),Rata Juri 1,Juri 2 (Kreativitas),Juri 2 (PD),Juri 2 (Kesesuaian Tema),Rata Juri 2,Juri 3 (Kreativitas),Juri 3 (PD),Juri 3 (Kesesuaian Tema),Rata Juri 3,Rata Total 3 Juri\n";
 
         let diurutkan = skorPeserta.map(p => {
             let r1 = hitungRataJuri(p.juri[1]);
@@ -558,7 +573,7 @@
             let j1 = p.juri[1];
             let j2 = p.juri[2];
             let j3 = p.juri[3];
-            let row = `${index + 1},${p.noUrut},"${p.nama}",${j1.kreativitas},${j1.pd},${j1.kerapian},${p.r1.toFixed(2)},${j2.kreativitas},${j2.pd},${j2.kerapian},${p.r2.toFixed(2)},${j3.kreativitas},${j3.pd},${j3.kerapian},${p.r3.toFixed(2)},${p.totalRata.toFixed(2)}`;
+            let row = `${index + 1},${p.noUrut},"${p.nama}",${j1.kreativitas},${j1.pd},${j1.tema || j1.kerapian || 0},${p.r1.toFixed(2)},${j2.kreativitas},${j2.pd},${j2.tema || j2.kerapian || 0},${p.r2.toFixed(2)},${j3.kreativitas},${j3.pd},${j3.tema || j3.kerapian || 0},${p.r3.toFixed(2)},${p.totalRata.toFixed(2)}`;
             csvContent += row + "\n";
         });
 
@@ -573,14 +588,14 @@
 
     function resetData() {
         if (confirm("Apakah Anda yakin ingin menghapus seluruh nilai dari 3 Juri? Data yang dihapus tidak dapat dikembalikan.")) {
-            localStorage.removeItem("petrochina_skor_v5");
+            localStorage.removeItem("petrochina_skor_v6");
             skorPeserta = dataPesertaMaster.map((nama, index) => ({
                 noUrut: index + 1,
                 nama: nama,
                 juri: {
-                    1: { kreativitas: 0, pd: 0, kerapian: 0 },
-                    2: { kreativitas: 0, pd: 0, kerapian: 0 },
-                    3: { kreativitas: 0, pd: 0, kerapian: 0 }
+                    1: { kreativitas: 0, pd: 0, tema: 0 },
+                    2: { kreativitas: 0, pd: 0, tema: 0 },
+                    3: { kreativitas: 0, pd: 0, tema: 0 }
                 }
             }));
             muatNilaiInput();
