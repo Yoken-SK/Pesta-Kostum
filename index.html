@@ -102,6 +102,11 @@
             border-left: 5px solid #dc2626;
         }
 
+        .card-finalis {
+            border-left: 5px solid #eab308;
+            background: linear-gradient(180deg, #ffffff 0%, #fefce8 100%);
+        }
+
         .card-title-area {
             display: flex;
             align-items: center;
@@ -111,25 +116,19 @@
             margin-bottom: 16px;
         }
 
-        .dot-amber {
-            width: 8px;
-            height: 8px;
-            background-color: #f59e0b;
-            border-radius: 50%;
-        }
-
-        .dot-red {
-            width: 8px;
-            height: 8px;
-            background-color: #dc2626;
-            border-radius: 50%;
-        }
+        .dot-amber { width: 8px; height: 8px; background-color: #f59e0b; border-radius: 50%; }
+        .dot-red { width: 8px; height: 8px; background-color: #dc2626; border-radius: 50%; }
+        .dot-gold { width: 8px; height: 8px; background-color: #eab308; border-radius: 50%; }
 
         .card h2 {
             font-size: 13px;
             font-weight: 700;
             color: #475569;
             text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
         }
 
         label {
@@ -141,7 +140,7 @@
             margin-bottom: 6px;
         }
 
-        input[type="text"], select {
+        select {
             width: 100%;
             height: 42px;
             border: 1px solid #cbd5e1;
@@ -151,16 +150,15 @@
             color: #334155;
             background-color: #f8fafc;
             outline: none;
-        }
-
-        select {
-            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://w3.org' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%20%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://w3.org' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
             background-position: right 10px center;
             background-repeat: no-repeat;
             background-size: 16px;
+            appearance: none;
+            -webkit-appearance: none;
         }
 
-        input:focus, select:focus {
+        select:focus {
             background-color: white;
             border-color: #f97316;
         }
@@ -195,7 +193,6 @@
         .bg-baik { background-color: #f59e0b; }
         .bg-sangat-baik { background-color: #dc2626; }
 
-        /* Desain Tabel Input Spesifik */
         .table-container {
             width: 100%;
             margin-bottom: 16px;
@@ -242,7 +239,10 @@
             cursor: pointer;
             box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.2);
             margin-top: 6px;
+            transition: opacity 0.2s;
         }
+
+        button.btn-submit:active { opacity: 0.9; }
 
         .flex-between {
             display: flex;
@@ -262,9 +262,11 @@
             cursor: pointer;
         }
 
-        .td-name { font-weight: 600; color: #334155; font-size: 12px; }
+        .td-rank { font-weight: 800; color: #eab308; text-align: center; width: 30px; }
+        .td-name { font-weight: 600; color: #334155; font-size: 13px; }
         .td-score { text-align: center; color: #64748b; font-family: monospace; font-size: 11px; }
         .td-total { text-align: right; font-weight: 700; color: #dc2626; font-size: 14px; font-family: monospace; }
+        .td-total-gold { color: #ca8a04; font-weight: 800; }
 
         .hidden { display: none !important; }
         .empty-text { font-size: 12px; color: #94a3b8; text-align: center; padding: 20px 0; }
@@ -280,43 +282,38 @@
                     <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNNSA1MCBBIDQ1IDQ1IDAgMSAxIDk1IDUwIEEgNDUgNDUgMCAxIDEgNSA1MCBaIiBmaWxsPSIjZjU4YTE5Ii8+PHBhdGggZD0iTTUgNTAgQSA0NSA0NSAwIDAgMCA5NSA1MCBaIiBmaWxsPSIjYzAwMDAwIi8+PHBhdGggZD0iTTUwIDUgTDUwIDUwIE01MCA1IEwyNSA0NSBNNTAgNSBMMzcgNDUgTTUwIDUgTDYzIDQ1IE01MCA1IEw3NSA0NSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMiLz48L3N2Zz4=" alt="PetroChina">
                 </div>
                 <div class="header-title">
-                    <h1>Lomba Costume Casual</h1>
-                    <p>Team Building Assessment</p>
+                    <h1>Scoring Juri</h1>
+                    <p>Lomba Kostum PetroChina</p>
                 </div>
             </div>
-            <span class="badge-hp">HP Mode</span>
+            <span class="badge-hp">Offline OK</span>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main>
-        <!-- Card Nama Juri -->
-        <section class="card card-accent">
-            <label for="namaJuri">Nama Juri / Penilai</label>
-            <input type="text" id="namaJuri" placeholder="Ketik nama Anda di sini...">
-        </section>
-
-        <!-- Card Input Nilai Utama -->
-        <section class="card">
+        <!-- 1. Card Form Penilaian -->
+        <div class="card card-accent">
             <div class="card-title-area">
-                <div class="dot-amber"></div>
-                <h2>Form Input Nilai</h2>
-            </div>
-            
-            <div style="margin-bottom: 16px;">
-                <label for="pilihPeserta">Pilih Peserta / Tim</label>
-                <select id="pilihPeserta">
-                    <option value="">-- Ketuk untuk memilih nama --</option>
-                    <option value="Peserta 01 - Budi">Peserta 01 - Budi</option>
-                    <option value="Peserta 02 - Sinta">Peserta 02 - Sinta</option>
-                    <option value="Peserta 03 - Andi">Peserta 03 - Andi</option>
-                    <option value="Peserta 04 - Rini">Peserta 04 - Rini</option>
-                    <option value="Peserta 05 - Doni">Peserta 05 - Doni</option>
-                </select>
+                <div class="dot-red"></div>
+                <h2>Input Nilai Peserta</h2>
             </div>
 
-            <div class="banner-skala">
-                <span><span class="badge-number bg-cukup">1</span> Cukup</span>
-                <span><span class="badge-number bg-baik">2</span> Baik</span>
-                <span><span class="badge-number bg-sangat-baik">3</span> Sangat Baik</span>
-            </div>
+            <form id="scoreForm">
+                <div class="form-group">
+                    <label for="namaPeserta">Pilih Peserta Lomba</label>
+                    <select id="namaPeserta" required>
+                        <!-- Daftar 50 Peserta dimasukkan otomatis via JS -->
+                    </select>
+                </div>
 
+                <div class="banner-skala">
+                    <span><span class="badge-number bg-cukup">6-7</span>60-79: Cukup</span>
+                    <span><span class="badge-number bg-baik">8</span>80-89: Baik</span>
+                    <span><span class="badge-number bg-sangat-baik">9</span>90-100: Istimewa</span>
+                </div>
+
+                <div class="table-container">
+                    <table class="tabel-aplikasi">
+                        <thead>
+                            <tr>
