@@ -5,29 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Scoring Lomba Kostum - PetroChina</title>
     <style>
-        /* Light Theme - Red Gradient & Rich Pastel Palette */
+        /* Theme - Deep Slate Indigo Gradient (Gelap di Atas -> Terang di Bawah) */
         :root {
-            /* Background Red Gradient: Terang di atas ke agak gelap di bawah */
-            --bg-gradient: linear-gradient(180deg, #fef2f2 0%, #fca5a5 50%, #ef4444 100%);
+            /* Gradasi latar belakang: Gelap (#1e293b) di atas ke Terang (#e2e8f0) di bawah */
+            --bg-gradient: linear-gradient(180deg, #1e293b 0%, #334155 35%, #94a3b8 70%, #e2e8f0 100%);
             --card-bg: #ffffff;
-            --card-border: #fca5a5;
-            --text-main: #1e293b;
-            --text-sub: #64748b;
+            --card-border: #cbd5e1;
+            --text-main: #0f172a;
+            --text-sub: #475569;
             
-            /* Sharper & Richer Pastel Accent Colors */
-            --pastel-blue-bg: #e0f2fe;
+            /* Accent Colors */
+            --pastel-blue-bg: #f0f9ff;
             --pastel-blue-border: #38bdf8;
             --pastel-blue-text: #0369a1;
             
-            --pastel-purple-bg: #f3e8ff;
+            --pastel-purple-bg: #faf5ff;
             --pastel-purple-border: #c084fc;
             --pastel-purple-text: #6b21a8;
 
-            --pastel-amber-bg: #fef3c7;
+            --pastel-amber-bg: #fffbeb;
             --pastel-amber-border: #f59e0b;
             --pastel-amber-text: #b45309;
 
-            --pastel-indigo-bg: #e0e7ff;
+            --pastel-indigo-bg: #ee2e8ff;
+            --pastel-indigo-bg-soft: #f0f3ff;
             --pastel-indigo-border: #818cf8;
             --pastel-indigo-text: #3730a3;
         }
@@ -47,15 +48,15 @@
             max-width: 600px; 
             margin: auto; 
             background: var(--card-bg); 
-            padding: 16px; 
-            border-radius: 16px; 
-            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.15); 
+            padding: 18px 16px; 
+            border-radius: 18px; 
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.25); 
             border: 1px solid var(--card-border);
         }
         
         h1 { 
             font-size: 1.35rem; 
-            background: linear-gradient(135deg, #dc2626, #991b1b);
+            background: linear-gradient(135deg, #1e3a8a, #4f46e5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-align: center; 
@@ -66,7 +67,7 @@
         .subtitle {
             text-align: center;
             font-size: 0.82rem;
-            color: #b91c1c;
+            color: #4338ca;
             margin-bottom: 16px;
             font-weight: 700;
         }
@@ -75,7 +76,7 @@
             font-size: 1.05rem; 
             color: #1e293b; 
             margin: 18px 0 10px 0; 
-            border-bottom: 2px solid #fecdd3; 
+            border-bottom: 2px solid #e2e8f0; 
             padding-bottom: 6px;
             display: flex;
             align-items: center;
@@ -100,8 +101,8 @@
             font-weight: 600;
         }
         select:focus { 
-            border-color: #dc2626; 
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2); 
+            border-color: #4f46e5; 
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2); 
             background-color: #ffffff;
         }
         
@@ -197,7 +198,7 @@
 
         /* Information Box */
         .criteria-box { 
-            background: var(--pastel-indigo-bg); 
+            background: var(--pastel-indigo-bg-soft); 
             padding: 10px 12px; 
             border: 1.5px solid var(--pastel-indigo-border);
             margin-bottom: 14px; 
@@ -212,7 +213,7 @@
         .btn { 
             display: block;
             width: 100%; 
-            background: linear-gradient(135deg, #ef4444, #b91c1c); 
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8); 
             color: #ffffff; 
             padding: 12px; 
             border: none; 
@@ -221,15 +222,15 @@
             font-size: 0.95rem; 
             font-weight: 700;
             margin-top: 14px;
-            box-shadow: 0 3px 10px rgba(239, 68, 68, 0.3);
+            box-shadow: 0 3px 10px rgba(37, 99, 235, 0.25);
             text-align: center;
         }
         .btn:active { transform: translateY(1px); opacity: 0.95; }
         
         .btn-secondary {
             background: #ffffff;
-            color: #dc2626;
-            border: 1.5px solid #dc2626;
+            color: #2563eb;
+            border: 1.5px solid #2563eb;
             font-size: 0.85rem;
             padding: 8px;
             font-weight: 700;
@@ -238,7 +239,7 @@
         
         .btn-danger {
             background: #fef2f2;
-            color: #991b1b;
+            color: #b91c1c;
             border: 1.5px solid #fca5a5;
             font-size: 0.8rem;
             padding: 8px;
@@ -277,8 +278,8 @@
         }
         
         th { 
-            background-color: #fff1f2; 
-            color: #881337; 
+            background-color: #f1f5f9; 
+            color: #1e293b; 
             font-weight: 800; 
             font-size: 0.73rem;
             white-space: nowrap;
@@ -286,10 +287,10 @@
         
         td { color: #0f172a; }
         td.text-left { text-align: left; padding-left: 6px; }
-        tr:nth-child(even) { background-color: #fff8f8; }
+        tr:nth-child(even) { background-color: #f8fafc; }
         
         .rank { font-weight: 800; color: #d97706; }
-        .total-score { font-weight: 800; color: #dc2626; font-size: 0.82rem; }
+        .total-score { font-weight: 800; color: #1d4ed8; font-size: 0.82rem; }
         
         .empty-row {
             color: #94a3b8;
