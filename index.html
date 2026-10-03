@@ -2,320 +2,161 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scoring Lomba Kostum - PetroChina</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f8fafc;
-            color: #334155;
-            padding-bottom: 50px;
-        }
-
-        header {
-            background: linear-gradient(135deg, #dc2626 0%, #f97316 50%, #f59e0b 100%);
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-container {
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-box {
-            background: white;
-            padding: 4px;
-            border-radius: 8px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .header-title h1 {
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            line-height: 1.2;
-        }
-
-        .header-title p {
-            font-size: 10px;
-            color: #ffedd5;
-            font-weight: 500;
-        }
-
-        .badge-hp {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 4px 8px;
-            border-radius: 9999px;
-            font-size: 9px;
-            font-weight: 700;
-            text-transform: uppercase;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        main {
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 16px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 16px;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-
-        .card-accent {
-            border-left: 5px solid #dc2626;
-        }
-
-        .card-finalis {
-            border-left: 5px solid #eab308;
-            background: linear-gradient(180deg, #ffffff 0%, #fefce8 100%);
-        }
-
-        .card-title-area {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 10px;
-            margin-bottom: 16px;
-        }
-
-        .dot-amber { width: 8px; height: 8px; background-color: #f59e0b; border-radius: 50%; }
-        .dot-red { width: 8px; height: 8px; background-color: #dc2626; border-radius: 50%; }
-        .dot-gold { width: 8px; height: 8px; background-color: #eab308; border-radius: 50%; }
-
-        .card h2 {
-            font-size: 13px;
-            font-weight: 700;
-            color: #475569;
-            text-transform: uppercase;
-        }
-
-        .form-group {
-            margin-bottom: 14px;
-        }
-
-        label {
-            display: block;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #64748b;
-            margin-bottom: 6px;
-        }
-
-        select {
-            width: 100%;
-            height: 42px;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            padding: 0 10px;
-            font-size: 14px;
-            color: #334155;
-            background-color: #f8fafc;
-            outline: none;
-            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://w3.org' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
-            background-position: right 10px center;
-            background-repeat: no-repeat;
-            background-size: 16px;
-            appearance: none;
-            -webkit-appearance: none;
-        }
-
-        select:focus {
-            background-color: white;
-            border-color: #f97316;
-        }
-
-        .banner-skala {
-            background: linear-gradient(to right, #fffbeb, #ffedd5);
-            border: 1px solid #fed7aa;
-            border-radius: 10px;
-            padding: 8px 12px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            font-weight: 600;
-            color: #7c2d12;
-            margin-bottom: 16px;
-        }
-
-        .badge-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            font-size: 9px;
-            font-weight: 700;
-            margin-right: 4px;
-            color: white;
-        }
-
-        .bg-cukup { background-color: #94a3b8; }
-        .bg-baik { background-color: #f59e0b; }
-        .bg-sangat-baik { background-color: #dc2626; }
-
-        .kriteria-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #edf2f7;
-        }
-
-        .kriteria-info {
-            flex: 1;
-            padding-right: 12px;
-        }
-
-        .kriteria-title {
-            font-size: 13px;
-            font-weight: 600;
-            color: #475569;
-        }
-
-        .kriteria-desc {
-            font-size: 11px;
-            color: #94a3b8;
-        }
-
-        .kriteria-select-box {
-            width: 100px;
-        }
-
-        .table-container {
-            width: 100%;
-            margin-bottom: 16px;
-        }
-
-        table.tabel-aplikasi {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        table.tabel-aplikasi th {
-            font-size: 10px;
-            text-transform: uppercase;
-            color: #94a3b8;
-            font-weight: 700;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        table.tabel-aplikasi td {
-            padding: 12px 0;
-            font-size: 13px;
-            border-bottom: 1px solid #edf2f7;
-            vertical-align: middle;
-        }
-
-        .td-rank { font-weight: 800; color: #eab308; text-align: center; width: 30px; }
-        .td-name { font-weight: 600; color: #334155; font-size: 13px; }
-        .td-score { text-align: center; color: #64748b; font-family: monospace; font-size: 11px; }
-        .td-total { text-align: right; font-weight: 700; color: #dc2626; font-size: 14px; font-family: monospace; }
-        .td-total-gold { color: #ca8a04; font-weight: 800; }
-
-        button.btn-submit {
-            width: 100%;
-            height: 46px;
-            background: linear-gradient(to right, #dc2626, #f97316);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.2);
-            margin-top: 16px;
-            transition: opacity 0.2s;
-        }
-
-        button.btn-submit:active { opacity: 0.9; }
-
-        .hidden { display: none !important; }
-        .empty-text { font-size: 12px; color: #94a3b8; text-align: center; padding: 20px 0; }
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f7f6; color: #333; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1, h2 { color: #006699; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input[type="text"], input[type="number"], select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        .criteria-box { background: #eef7fa; padding: 10px; border-left: 5px solid #006699; margin-bottom: 20px; font-size: 0.9em; }
+        button { background-color: #006699; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 1px; font-weight: bold;}
+        button:hover { background-color: #004c73; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #006699; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .rank { font-weight: bold; color: #ff9900; }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <div class="header-left">
-                <div class="logo-box">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNNSA1MCBBIDQ1IDQ1IDAgMSAxIDk1IDUwIEEgNDUgNDUgMCAxIDEgNSA1MCBaIiBmaWxsPSIjZjU4YTE5Ii8+PHBhdGggZD0iTTUgNTAgQSA0NSA0NSAwIDAgMCA5NSA1MCBaIiBmaWxsPSIjYzAwMDAwIi8+PHBhdGggZD0iTTUwIDUgTDUwIDUwIE01MCA1IEwyNSA0NSBNNTAgNSBMMzcgNDUgTTUwIDUgTDYzIDQ1IE01MCA1IEw3NSA0NSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMiLz48L3N2Zz4=" alt="PetroChina">
-                </div>
-                <div class="header-title">
-                    <h1>Scoring Juri</h1>
-                    <p>Lomba Kostum PetroChina</p>
-                </div>
-            </div>
-            <span class="badge-hp">Offline OK</span>
-        </div>
-    </header>
+<div class="container">
+    <h1>Scoring Juri - Lomba Kostum PetroChina</h1>
+    
+    <!-- Input Juri -->
+    <div class="form-group">
+        <label for="namaJuri">Nama Juri:</label>
+        <input type="text" id="namaJuri" placeholder="Masukkan nama Anda sebagai juri...">
+    </div>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Card 1: Input Nilai -->
-        <div class="card card-accent">
-            <div class="card-title-area">
-                <div class="dot-red"></div>
-                <h2>Input Nilai Peserta</h2>
-            </div>
+    <div class="criteria-box">
+        <strong>Kriteria Penilaian:</strong><br>
+        6 - 7 (60-79): Cukup | 8 (80-89): Baik | 9 - 10 (90-100): Istimewa
+    </div>
 
-            <form id="scoreForm">
-                <div class="form-group">
-                    <label for="namaPeserta">Pilih Peserta Lomba</label>
-                    <select id="namaPeserta" required>
-                        <!-- Diisi otomatis oleh JS -->
-                    </select>
-                </div>
+    <!-- Input Nilai Peserta -->
+    <h2>Input Nilai Peserta</h2>
+    <div class="form-group">
+        <label for="pilihPeserta">Pilih Peserta Lomba:</label>
+        <select id="pilihPeserta"></select>
+    </div>
+    
+    <div class="form-group">
+        <label for="nilaiKostum">Nilai Skor (60 - 100):</label>
+        <input type="number" id="nilaiKostum" min="60" max="100" placeholder="Contoh: 85">
+    </div>
 
-                <div class="banner-skala">
-                    <span><span class="badge-number bg-cukup">6-7</span>60-79: Cukup</span>
-                    <span><span class="badge-number bg-baik">8</span>80-89: Baik</span>
-                    <span><span class="badge-number bg-sangat-baik">9</span>90-100: Istimewa</span>
-                </div>
+    <button onclick="simpanNilai()">Simpan & Update Skor</button>
 
-                <label style="margin-top: 15px; margin-bottom: 6px; display: block; font-size: 11px; font-weight: 700; color: #64748b;">Kriteria Penilaian</label>
-                
-                <div class="kriteria-row">
-                    <div class="kriteria-info">
+    <!-- Leaderboard / Skor Sementara -->
+    <h2>Papan Skor Sementara (Top 50)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Peringkat</th>
+                <th>No. Urut</th>
+                <th>Nama Peserta</th>
+                <th>Skor</th>
+                <th>Juri Penilai</th>
+            </tr>
+        </thead>
+        <tbody id="tabelSkor">
+            <!-- Data akan diisi via JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Data 50 Peserta asli dari file database Anda
+    const dataPeserta = [
+        "PUTU BUDAYASA", "MUHAMMAD ASRI", "PRIMAYUDI", "TANDI MATONGAN", "KUBROHADI",
+        "SASONO WIDODO", "NURAYAH", "TOTOK WIDI NUGROHO", "BUDIYONO", "SABAR LUMBAN TORUAN",
+        "M. SAPRI", "WAGISO", "SOLIHIN", "SALMON BATUBARA", "YUZARMEN",
+        "MULYONO HERLAMBANG", "ALBERTUS SUPRIWANTA", "LASNO", "ENDANG SUSILAWATI", "APRIDA BUSTAMI",
+        "K. JUAH BRAHMANA", "ABE GORATO PASARIBU", "R.M. REYNER IQBAL KHAMESWARA", "LILIEK RACHMANU SYAFEI", "HARRY HANDOYO",
+        "ARIANSYAH LUKMAN", "HENDRA", "KAMARUDDIN", "BASUKI", "DR. WILLIAM ADITYA",
+        "JOHNY CAPRIANTO", "ADEWIRA HANDAYANI", "YODI (GOVREL)", "YUSRIADI TYAJAYA", "ARI SETIAWAN PRAKOSO",
+        "NASIRWAN HAMONANGAN", "TRI OMPU ARISIKAM", "SUGIYANTO", "IQBAL MAULANA ARISA EFFENDI", "EKAWATI MASRI",
+        "DANANG SANTOSO", "FARAH FADILAH", "GAJIANTO PANGARSO HK", "AGUNG BRATANATA", "FERNAN K DJOHAN",
+        "HERI SUPRIYONO", "AMINUDIN (CAPTAIN)", "BAKRI", "MAHMUDI", "DINANTA MAULANA"
+    ];
+
+    // Struktur penyimpanan skor internal
+    let skorPeserta = dataPeserta.map((nama, index) => ({
+        noUrut: index + 1,
+        nama: nama,
+        skor: 0,
+        juri: "-"
+    }));
+
+    // Inisialisasi dropdown peserta dan tabel saat halaman dimuat
+    function init() {
+        const select = document.getElementById("pilihPeserta");
+        skorPeserta.forEach(p => {
+            let opt = document.createElement("option");
+            opt.value = p.noUrut;
+            opt.textContent = `${p.noUrut}. ${p.nama}`;
+            select.appendChild(opt);
+        });
+        tampilkanLeaderboard();
+    }
+
+    // Fungsi menyimpan nilai
+    function simpanNilai() {
+        const juri = document.getElementById("namaJuri").value.trim();
+        const idPeserta = parseInt(document.getElementById("pilihPeserta").value);
+        const nilai = parseInt(document.getElementById("nilaiKostum").value);
+
+        if (!juri) {
+            alert("Harap masukkan nama juri terlebih dahulu!");
+            return;
+        }
+        if (isNaN(nilai) || nilai < 60 || nilai > 100) {
+            alert("Harap masukkan skor valid antara 60 hingga 100!");
+            return;
+        }
+
+        // Cari peserta dan update datanya
+        let peserta = skorPeserta.find(p => p.noUrut === idPeserta);
+        if (peserta) {
+            peserta.skor = nilai;
+            peserta.juri = juri;
+        }
+
+        // Reset input nilai agar siap untuk input berikutnya
+        document.getElementById("nilaiKostum").value = "";
+        
+        tampilkanLeaderboard();
+        alert(`Berhasil menyimpan nilai untuk ${peserta.nama}`);
+    }
+
+    // Fungsi merender papan skor secara realtime (diurutkan dari yang tertinggi)
+    function tampilkanLeaderboard() {
+        const tbody = document.getElementById("tabelSkor");
+        tbody.innerHTML = "";
+
+        // Mengkloning dan mengurutkan berdasarkan skor terbesar
+        let diurutkan = [...skorPeserta].sort((a, b) => b.skor - a.skor);
+
+        diurutkan.forEach((p, index) => {
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td class="rank">${index + 1}</td>
+                <td>${p.noUrut}</td>
+                <td>${p.nama}</td>
+                <td><strong>${p.skor > 0 ? p.skor : '-'}</strong></td>
+                <td>${p.juri}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    // Jalankan sistem pertama kali
+    window.onload = init;
+</script>
+
+</body>
+</html>
