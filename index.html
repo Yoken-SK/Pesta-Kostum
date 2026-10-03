@@ -1,160 +1,537 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Petrochina</title>
-  <style>
-    /* Reset & Style Dasar */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Scoring Lomba Kostum - PetroChina</title>
+    <style>
+        /* Tema Gelap Hijau & Reset Dasar */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #0b130f; 
+            color: #e2e8f0; 
+            padding: 15px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .container { 
+            max-width: 650px; 
+            margin: auto; 
+            background: #12221a; 
+            padding: 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+            border: 1px solid #1f3a2b;
+        }
+        
+        h1 { 
+            font-size: 1.4rem; 
+            color: #10b981; 
+            text-align: center; 
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #a7f3d0;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        h2 { font-size: 1.1rem; color: #34d399; margin: 20px 0 10px 0; border-bottom: 1px solid #1f3a2b; padding-bottom: 5px; }
+        
+        /* Form & Input Mobile-Friendly */
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; color: #cbd5e1; }
+        
+        select { 
+            width: 100%; 
+            padding: 12px; 
+            font-size: 15px;
+            background-color: #1a3024; 
+            border: 1px solid #2d523d; 
+            border-radius: 8px; 
+            color: #fff;
+            outline: none;
+            transition: border-color 0.2s;
+            -webkit-appearance: none;
+        }
+        select:focus { border-color: #10b981; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2); }
+        
+        /* Style Slider Geser */
+        .slider-card {
+            background: #162e22;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #2d523d;
+            margin-bottom: 12px;
+        }
+        
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .slider-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+        }
+        
+        .slider-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #10b981;
+            background: #0b130f;
+            padding: 2px 10px;
+            border-radius: 6px;
+            border: 1px solid #10b981;
+            min-width: 50px;
+            text-align: center;
+        }
 
-    body {
-      background-color: #f4f6f9;
-      color: #333;
-      padding: 20px;
-    }
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    /* Header Dashboard */
-    .dashboard-header {
-      background: linear-gradient(135deg, #0056b3, #002b5b);
-      color: #ffffff;
-      padding: 24px 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      margin-bottom: 25px;
-    }
+        .slider-container span {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            font-weight: 600;
+        }
 
-    /* Baris Pertama Judul */
-    .title-line-1 {
-      font-size: 1.2rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      opacity: 0.85;
-      margin-bottom: 4px;
-    }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background: #1a3024;
+            outline: none;
+            border: 1px solid #2d523d;
+        }
 
-    /* Baris Kedua Judul (Hasil Update) */
-    .title-line-2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #ffd700; /* Warna aksen emas */
-      letter-spacing: 0.5px;
-    }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
 
-    /* Area Slide / Mode Switcher (Input Mode) */
-    .input-mode-container {
-      margin-top: 15px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 10px 16px;
-      border-radius: 8px;
-      width: fit-content;
-    }
+        input[type="range"]::-moz-range-thumb {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+            border: none;
+        }
 
-    .input-mode-label {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    /* Toggle Slide Switch */
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 50px;
-      height: 24px;
-    }
-
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: #ccc;
-      transition: .4s;
-      border-radius: 24px;
-    }
-
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 18px;
-      width: 18px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
-      transition: .4s;
-      border-radius: 50%;
-    }
-
-    input:checked + .slider {
-      background-color: #28a745;
-    }
-
-    input:checked + .slider:before {
-      transform: translateX(26px);
-    }
-
-    /* Area Konten Dashboard */
-    .dashboard-content {
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-  </style>
+        /* Box Kriteria */
+        .criteria-box { 
+            background: #0f2d1e; 
+            padding: 10px 12px; 
+            border-left: 4px solid #10b981; 
+            margin-bottom: 15px; 
+            font-size: 0.82rem; 
+            border-radius: 0 8px 8px 0;
+            line-height: 1.4;
+        }
+        .criteria-box strong { color: #34d399; }
+        
+        /* Tombol Utama & Grup Tombol Aksi */
+        .btn { 
+            display: block;
+            width: 100%; 
+            background-color: #10b981; 
+            color: #0b130f; 
+            padding: 14px; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 1rem; 
+            font-weight: 700;
+            margin-top: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: background 0.2s;
+            text-align: center;
+        }
+        .btn:active { background-color: #059669; }
+        
+        .btn-secondary {
+            background-color: #1e3a29;
+            color: #34d399;
+            border: 1px solid #2d523d;
+            font-size: 0.9rem;
+            padding: 10px;
+        }
+        .btn-secondary:active { background-color: #274d37; }
+        
+        .btn-danger {
+            background-color: #7f1d1d;
+            color: #fecaca;
+            border: 1px solid #991b1b;
+            font-size: 0.85rem;
+            padding: 8px;
+            margin-top: 20px;
+        }
+        .btn-danger:active { background-color: #991b1b; }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        /* Pembungkus Tabel agar bisa di-scroll secara horizontal */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 12px;
+            border-radius: 8px;
+            border: 1px solid #1f3a2b;
+        }
+        
+        table { width: 100%; border-collapse: collapse; min-width: 550px; font-size: 0.85rem; }
+        th, td { padding: 10px 8px; text-align: left; border-bottom: 1px solid #1f3a2b; }
+        th { background-color: #162e22; color: #34d399; font-weight: 600; text-align: center; }
+        td { text-align: center; }
+        td.text-left { text-align: left; }
+        tr:nth-child(even) { background-color: #15271e; }
+        .rank { font-weight: bold; color: #f59e0b; }
+        .total-score { font-weight: bold; color: #10b981; font-size: 0.95rem; }
+        
+        /* Custom Dropdown Arrow */
+        .select-wrapper { position: relative; }
+        .select-wrapper::after {
+            content: "▼"; font-size: 10px; color: #a7f3d0;
+            position: absolute; right: 15px; top: 16px; pointer-events: none;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Judul Atas Dashboard -->
-  <header class="dashboard-header">
-    <div class="title-line-1">PETROCHINA</div>
-    <!-- Baris Kedua Judul Berhasil Diperbarui -->
-    <h1 class="title-line-2" id="dashboardTitle">Petrochina Team Building 2026</h1>
-
-    <!-- Slide / Switcher Input Mode -->
-    <div class="input-mode-container">
-      <span class="input-mode-label">Input Mode:</span>
-      <label class="switch">
-        <input type="checkbox" id="modeToggle" onchange="toggleInputMode(this)">
-        <span class="slider"></span>
-      </label>
-      <span id="modeStatus" class="input-mode-label">Manual</span>
+<div class="container">
+    <h1>Scoring Juri Lomba Kostum</h1>
+    <div class="subtitle">PetroChina System (Slider Input Mode)</div>
+    
+    <!-- Input Juri -->
+    <div class="form-group">
+        <label for="pilihJuri">Pilih Juri Penilai</label>
+        <div class="select-wrapper">
+            <select id="pilihJuri">
+                <option value="1">Juri 1</option>
+                <option value="2">Juri 2</option>
+                <option value="3">Juri 3</option>
+            </select>
+        </div>
     </div>
-  </header>
 
-  <!-- Konten Utama Dashboard -->
-  <main class="dashboard-content">
-    <h2>Selamat Datang di Dashboard Utama</h2>
-    <p>Silakan kelola data dan aktivitas tim Petrochina melalui panel ini.</p>
-  </main>
+    <div class="criteria-box">
+        <strong>Skala Penilaian Kategori (Geser 60 - 100):</strong><br>
+        60 - 79: Cukup | 80 - 89: Baik | 90 - 100: Istimewa<br>
+        <em>*Geser tombol hijau ke kanan/kiri untuk memilih nilai.</em>
+    </div>
 
-  <!-- Logika JavaScript -->
-  <script>
-    // Fungsi untuk menangani aksi slide / switch Input Mode
-    function toggleInputMode(toggleElement) {
-      const modeStatusText = document.getElementById('modeStatus');
-      if (toggleElement.checked) {
-        modeStatusText.textContent = 'Otomatis (Slide On)';
-        console.log('Input mode diubah ke Otomatis');
-      } else {
-        modeStatusText.textContent = 'Manual (Slide Off)';
-        console.log('Input mode diubah ke Manual');
-      }
+    <!-- Input Nilai Peserta -->
+    <h2>Input Nilai Peserta</h2>
+    <div class="form-group">
+        <label for="pilihPeserta">Pilih Peserta Lomba</label>
+        <div class="select-wrapper">
+            <select id="pilihPeserta"></select>
+        </div>
+    </div>
+    
+    <!-- Slider 3 Kategori Penilaian -->
+    <div class="slider-card">
+        <div class="slider-header">
+            <span class="slider-title">Kreativitas</span>
+            <span class="slider-value" id="valKreativitas">75</span>
+        </div>
+        <div class="slider-container">
+            <span>60</span>
+            <input type="range" id="skorKreativitas" min="60" max="100" value="75" oninput="updateVal('Kreativitas')">
+            <span>100</span>
+        </div>
+    </div>
+
+    <div class="slider-card">
+        <div class="slider-header">
+            <span class="slider-title">Kepercayaan Diri</span>
+            <span class="slider-value" id="valPD">75</span>
+        </div>
+        <div class="slider-container">
+            <span>60</span>
+            <input type="range" id="skorPD" min="60" max="100" value="75" oninput="updateVal('PD')">
+            <span>100</span>
+        </div>
+    </div>
+
+    <div class="slider-card">
+        <div class="slider-header">
+            <span class="slider-title">Kerapian</span>
+            <span class="slider-value" id="valKerapian">75</span>
+        </div>
+        <div class="slider-container">
+            <span>60</span>
+            <input type="range" id="skorKerapian" min="60" max="100" value="75" oninput="updateVal('Kerapian')">
+            <span>100</span>
+        </div>
+    </div>
+
+    <button class="btn" onclick="simpanNilai()">Simpan & Update Skor</button>
+
+    <!-- Leaderboard / Skor Sementara (Top 10) -->
+    <h2>Papan Skor Sementara (Top 10)</h2>
+    
+    <div class="button-group">
+        <button class="btn btn-secondary" onclick="exportKeCSV()">Export Data Lengkap (CSV/Excel)</button>
+    </div>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 45px;">Rank</th>
+                    <th style="width: 40px;">No</th>
+                    <th style="text-align: left;">Nama Peserta</th>
+                    <th style="width: 60px;">Juri 1</th>
+                    <th style="width: 60px;">Juri 2</th>
+                    <th style="width: 60px;">Juri 3</th>
+                    <th style="width: 75px;">Rata-Rata</th>
+                </tr>
+            </thead>
+            <tbody id="tabelSkor">
+                <!-- Data otomatis terisi -->
+            </tbody>
+        </table>
+    </div>
+
+    <button class="btn btn-danger" onclick="resetData()">Reset Semua Data Penilaian</button>
+</div>
+
+<script>
+    const dataPesertaMaster = [
+        "PUTU BUDAYASA", "MUHAMMAD ASRI", "PRIMAYUDI", "TANDI MATONGAN", "KUBROHADI",
+        "SASONO WIDODO", "NURAYAH", "TOTOK WIDI NUGROHO", "BUDIYONO", "SABAR LUMBAN TORUAN",
+        "M. SAPRI", "WAGISO", "SOLIHIN", "SALMON BATUBARA", "YUZARMEN",
+        "MULYONO HERLAMBANG", "ALBERTUS SUPRIWANTA", "LASNO", "ENDANG SUSILAWATI", "APRIDA BUSTAMI",
+        "K. JUAH BRAHMANA", "ABE GORATO PASARIBU", "R.M. REYNER IQBAL KHAMESWARA", "LILIEK RACHMANU SYAFEI", "HARRY HANDOYO",
+        "ARIANSYAH LUKMAN", "HENDRA", "KAMARUDDIN", "BASUKI", "DR. WILLIAM ADITYA",
+        "JOHNY CAPRIANTO", "ADEWIRA HANDAYANI", "YODI (GOVREL)", "YUSRIADI TYAJAYA", "ARI SETIAWAN PRAKOSO",
+        "NASIRWAN HAMONANGAN", "TRI OMPU ARISIKAM", "SUGIYANTO", "IQBAL MAULANA ARISA EFFENDI", "EKAWATI MASRI",
+        "DANANG SANTOSO", "FARAH FADILAH", "GAJIANTO PANGARSO HK", "AGUNG BRATANATA", "FERNAN K DJOHAN",
+        "HERI SUPRIYONO", "AMINUDIN (CAPTAIN)", "BAKRI", "MAHMUDI", "DINANTA MAULANA"
+    ];
+
+    let skorPeserta = [];
+
+    function init() {
+        const simpananData = localStorage.getItem("petrochina_skor_v3");
+
+        if (simpananData) {
+            skorPeserta = JSON.parse(simpananData);
+        } else {
+            skorPeserta = dataPesertaMaster.map((nama, index) => ({
+                noUrut: index + 1,
+                nama: nama,
+                juri: {
+                    1: { kreativitas: 0, pd: 0, kerapian: 0 },
+                    2: { kreativitas: 0, pd: 0, kerapian: 0 },
+                    3: { kreativitas: 0, pd: 0, kerapian: 0 }
+                }
+            }));
+        }
+
+        isiDropdownPeserta();
+        tampilkanLeaderboard();
+        
+        document.getElementById("pilihPeserta").addEventListener("change", muatNilaiInput);
+        document.getElementById("pilihJuri").addEventListener("change", muatNilaiInput);
+        muatNilaiInput();
     }
-  </script>
+
+    function updateVal(kat) {
+        const val = document.getElementById("skor" + kat).value;
+        document.getElementById("val" + kat).textContent = val;
+    }
+
+    function setSliderVal(kat, val) {
+        const defaultVal = val > 0 ? val : 75;
+        document.getElementById("skor" + kat).value = defaultVal;
+        document.getElementById("val" + kat).textContent = defaultVal;
+    }
+
+    function isiDropdownPeserta() {
+        const select = document.getElementById("pilihPeserta");
+        select.innerHTML = "";
+        skorPeserta.forEach(p => {
+            let opt = document.createElement("option");
+            opt.value = p.noUrut;
+            opt.textContent = `${p.noUrut}. ${p.nama}`;
+            select.appendChild(opt);
+        });
+    }
+
+    function hitungRataJuri(dataJuri) {
+        if (!dataJuri || (dataJuri.kreativitas === 0 && dataJuri.pd === 0 && dataJuri.kerapian === 0)) return 0;
+        return (dataJuri.kreativitas + dataJuri.pd + dataJuri.kerapian) / 3;
+    }
+
+    function hitungRataTotal(peserta) {
+        let total = 0;
+        let count = 0;
+        [1, 2, 3].forEach(idJuri => {
+            let r = hitungRataJuri(peserta.juri[idJuri]);
+            if (r > 0) {
+                total += r;
+                count++;
+            }
+        });
+        return count > 0 ? (total / count) : 0;
+    }
+
+    function muatNilaiInput() {
+        const idPeserta = parseInt(document.getElementById("pilihPeserta").value);
+        const idJuri = document.getElementById("pilihJuri").value;
+        const peserta = skorPeserta.find(p => p.noUrut === idPeserta);
+
+        if (peserta && peserta.juri[idJuri]) {
+            const data = peserta.juri[idJuri];
+            setSliderVal("Kreativitas", data.kreativitas);
+            setSliderVal("PD", data.pd);
+            setSliderVal("Kerapian", data.kerapian);
+        }
+    }
+
+    function simpanNilai() {
+        const idJuri = document.getElementById("pilihJuri").value;
+        const idPeserta = parseInt(document.getElementById("pilihPeserta").value);
+        
+        const krea = parseInt(document.getElementById("skorKreativitas").value);
+        const pd = parseInt(document.getElementById("skorPD").value);
+        const rapi = parseInt(document.getElementById("skorKerapian").value);
+
+        let peserta = skorPeserta.find(p => p.noUrut === idPeserta);
+        if (peserta) {
+            peserta.juri[idJuri] = {
+                kreativitas: krea,
+                pd: pd,
+                kerapian: rapi
+            };
+        }
+
+        localStorage.setItem("petrochina_skor_v3", JSON.stringify(skorPeserta));
+
+        tampilkanLeaderboard();
+        
+        // Pindahkan ke peserta berikutnya otomatis
+        const select = document.getElementById("pilihPeserta");
+        if (select.selectedIndex < select.options.length - 1) {
+            select.selectedIndex += 1;
+            muatNilaiInput();
+        }
+    }
+
+    function tampilkanLeaderboard() {
+        const tbody = document.getElementById("tabelSkor");
+        tbody.innerHTML = "";
+
+        let diurutkan = skorPeserta.map(p => {
+            let r1 = hitungRataJuri(p.juri[1]);
+            let r2 = hitungRataJuri(p.juri[2]);
+            let r3 = hitungRataJuri(p.juri[3]);
+            let totalRata = hitungRataTotal(p);
+            return { ...p, r1, r2, r3, totalRata };
+        }).sort((a, b) => {
+            if (b.totalRata !== a.totalRata) {
+                return b.totalRata - a.totalRata;
+            }
+            return a.noUrut - b.noUrut;
+        });
+
+        let top10 = diurutkan.slice(0, 10);
+
+        top10.forEach((p, index) => {
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td class="rank">${index + 1}</td>
+                <td>${p.noUrut}</td>
+                <td class="text-left"><strong>${p.nama}</strong></td>
+                <td>${p.r1 > 0 ? p.r1.toFixed(1) : '-'}</td>
+                <td>${p.r2 > 0 ? p.r2.toFixed(1) : '-'}</td>
+                <td>${p.r3 > 0 ? p.r3.toFixed(1) : '-'}</td>
+                <td class="total-score">${p.totalRata > 0 ? p.totalRata.toFixed(2) : '-'}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function exportKeCSV() {
+        let csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += "Rank,No Urut,Nama Peserta,Juri 1 (Kreativitas),Juri 1 (PD),Juri 1 (Kerapian),Rata Juri 1,Juri 2 (Kreativitas),Juri 2 (PD),Juri 2 (Kerapian),Rata Juri 2,Juri 3 (Kreativitas),Juri 3 (PD),Juri 3 (Kerapian),Rata Juri 3,Rata Total 3 Juri\n";
+
+        let diurutkan = skorPeserta.map(p => {
+            let r1 = hitungRataJuri(p.juri[1]);
+            let r2 = hitungRataJuri(p.juri[2]);
+            let r3 = hitungRataJuri(p.juri[3]);
+            let totalRata = hitungRataTotal(p);
+            return { ...p, r1, r2, r3, totalRata };
+        }).sort((a, b) => {
+            if (b.totalRata !== a.totalRata) {
+                return b.totalRata - a.totalRata;
+            }
+            return a.noUrut - b.noUrut;
+        });
+
+        diurutkan.forEach((p, index) => {
+            let j1 = p.juri[1];
+            let j2 = p.juri[2];
+            let j3 = p.juri[3];
+            let row = `${index + 1},${p.noUrut},"${p.nama}",${j1.kreativitas},${j1.pd},${j1.kerapian},${p.r1.toFixed(2)},${j2.kreativitas},${j2.pd},${j2.kerapian},${p.r2.toFixed(2)},${j3.kreativitas},${j3.pd},${j3.kerapian},${p.r3.toFixed(2)},${p.totalRata.toFixed(2)}`;
+            csvContent += row + "\n";
+        });
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `Rekap_Lengkap_3Juri_Lomba_Kostum.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    function resetData() {
+        if (confirm("Apakah Anda yakin ingin menghapus seluruh nilai dari 3 Juri? Data yang dihapus tidak dapat dikembalikan.")) {
+            localStorage.removeItem("petrochina_skor_v3");
+            skorPeserta = dataPesertaMaster.map((nama, index) => ({
+                noUrut: index + 1,
+                nama: nama,
+                juri: {
+                    1: { kreativitas: 0, pd: 0, kerapian: 0 },
+                    2: { kreativitas: 0, pd: 0, kerapian: 0 },
+                    3: { kreativitas: 0, pd: 0, kerapian: 0 }
+                }
+            }));
+            muatNilaiInput();
+            tampilkanLeaderboard();
+            alert("Seluruh data berhasil di-reset!");
+        }
+    }
+
+    window.onload = init;
+</script>
 
 </body>
 </html>
