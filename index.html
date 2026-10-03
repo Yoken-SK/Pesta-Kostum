@@ -16,7 +16,7 @@
         }
         
         .container { 
-            max-width: 600px; 
+            max-width: 650px; 
             margin: auto; 
             background: #12221a; 
             padding: 20px; 
@@ -40,79 +40,112 @@
             opacity: 0.8;
         }
         
-        h2 { font-size: 1.2rem; color: #34d399; margin: 20px 0 10px 0; border-bottom: 1px solid #1f3a2b; padding-bottom: 5px; }
+        h2 { font-size: 1.1rem; color: #34d399; margin: 20px 0 10px 0; border-bottom: 1px solid #1f3a2b; padding-bottom: 5px; }
         
         /* Form & Input Mobile-Friendly */
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.95rem; color: #cbd5e1; }
+        .form-group { margin-bottom: 12px; }
+        label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 0.88rem; color: #cbd5e1; }
         
-        /* Optimalisasi input untuk iOS & Android */
         input[type="text"], input[type="number"], select { 
             width: 100%; 
-            padding: 12px; 
-            font-size: 16px; /* Mencegah auto-zoom otomatis di Safari iPhone */
+            padding: 10px 12px; 
+            font-size: 15px;
             background-color: #1a3024; 
             border: 1px solid #2d523d; 
             border-radius: 8px; 
             color: #fff;
             outline: none;
             transition: border-color 0.2s;
-            -webkit-appearance: none; /* Reset gaya bawaan iOS */
+            -webkit-appearance: none;
         }
         input:focus, select:focus { border-color: #10b981; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2); }
         
+        /* Grid 3 Kategori */
+        .kategori-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
         /* Box Kriteria */
         .criteria-box { 
             background: #0f2d1e; 
-            padding: 12px; 
+            padding: 10px 12px; 
             border-left: 4px solid #10b981; 
-            margin-bottom: 20px; 
-            font-size: 0.85rem; 
+            margin-bottom: 15px; 
+            font-size: 0.82rem; 
             border-radius: 0 8px 8px 0;
             line-height: 1.4;
         }
         .criteria-box strong { color: #34d399; }
         
-        /* Tombol Ukuran Besar untuk Sentuhan Jari */
-        button { 
+        /* Tombol Utama & Grup Tombol Aksi */
+        .btn { 
             display: block;
             width: 100%; 
             background-color: #10b981; 
             color: #0b130f; 
-            padding: 14px; 
+            padding: 12px; 
             border: none; 
             border-radius: 8px; 
             cursor: pointer; 
-            font-size: 1rem; 
+            font-size: 0.95rem; 
             font-weight: 700;
             margin-top: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             transition: background 0.2s;
+            text-align: center;
         }
-        button:active { background-color: #059669; }
+        .btn:active { background-color: #059669; }
         
-        /* Pembungkus Tabel agar bisa di-scroll secara horizontal di HP */
+        .btn-secondary {
+            background-color: #1e3a29;
+            color: #34d399;
+            border: 1px solid #2d523d;
+        }
+        .btn-secondary:active { background-color: #274d37; }
+        
+        .btn-danger {
+            background-color: #7f1d1d;
+            color: #fecaca;
+            border: 1px solid #991b1b;
+            font-size: 0.85rem;
+            padding: 8px;
+            margin-top: 20px;
+        }
+        .btn-danger:active { background-color: #991b1b; }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        /* Pembungkus Tabel agar bisa di-scroll secara horizontal */
         .table-responsive {
             width: 100%;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            margin-top: 15px;
+            margin-top: 12px;
             border-radius: 8px;
             border: 1px solid #1f3a2b;
         }
         
-        table { width: 100%; border-collapse: collapse; min-width: 450px; font-size: 0.9rem; }
-        th, td { padding: 12px 10px; text-align: left; border-bottom: 1px solid #1f3a2b; }
-        th { background-color: #162e22; color: #34d399; font-weight: 600; }
+        table { width: 100%; border-collapse: collapse; min-width: 550px; font-size: 0.85rem; }
+        th, td { padding: 10px 8px; text-align: left; border-bottom: 1px solid #1f3a2b; }
+        th { background-color: #162e22; color: #34d399; font-weight: 600; text-align: center; }
+        td { text-align: center; }
+        td.text-left { text-align: left; }
         tr:nth-child(even) { background-color: #15271e; }
-        .rank { font-weight: bold; color: #f59e0b; text-align: center; }
-        td strong { color: #f8fafc; }
+        .rank { font-weight: bold; color: #f59e0b; }
+        .total-score { font-weight: bold; color: #10b981; font-size: 0.95rem; }
         
-        /* Custom Dropdown Arrow untuk iOS */
+        /* Custom Dropdown Arrow */
         .select-wrapper { position: relative; }
         .select-wrapper::after {
             content: "▼"; font-size: 10px; color: #a7f3d0;
-            position: absolute; right: 15px; top: 16px; pointer-events: none;
+            position: absolute; right: 15px; top: 14px; pointer-events: none;
         }
     </style>
 </head>
@@ -120,17 +153,24 @@
 
 <div class="container">
     <h1>Scoring Juri Lomba Kostum</h1>
-    <div class="subtitle">PetroChina Offline Mode</div>
+    <div class="subtitle">PetroChina System (3 Juri & 3 Kategori)</div>
     
-    <!-- Input Juri -->
+    <!-- Dropdown Juri -->
     <div class="form-group">
-        <label for="namaJuri">Nama Juri</label>
-        <input type="text" id="namaJuri" placeholder="Ketik nama Anda...">
+        <label for="pilihJuri">Pilih Juri Penilai</label>
+        <div class="select-wrapper">
+            <select id="pilihJuri">
+                <option value="1">Juri 1</option>
+                <option value="2">Juri 2</option>
+                <option value="3">Juri 3</option>
+            </select>
+        </div>
     </div>
 
     <div class="criteria-box">
-        <strong>Kriteria Penilaian:</strong><br>
-        6-7 (60-79): Cukup | 8 (80-89): Baik | 9 (90-100): Istimewa
+        <strong>Skala Penilaian Kategori (60 - 100):</strong><br>
+        60 - 79: Cukup | 80 - 89: Baik | 90 - 100: Istimewa<br>
+        <em>*Nilai total tiap juri & rata-rata 3 juri dihitung otomatis.</em>
     </div>
 
     <!-- Input Nilai Peserta -->
@@ -142,24 +182,42 @@
         </div>
     </div>
     
-    <div class="form-group">
-        <label for="nilaiKostum">Nilai Skor (60 - 100)</label>
-        <input type="number" id="nilaiKostum" inputmode="numeric" min="60" max="100" placeholder="Masukkan skor...">
+    <!-- 3 Kategori Penilaian -->
+    <div class="kategori-grid">
+        <div class="form-group">
+            <label for="skorKreativitas">Kreativitas</label>
+            <input type="number" id="skorKreativitas" inputmode="numeric" min="60" max="100" placeholder="60-100">
+        </div>
+        <div class="form-group">
+            <label for="skorPD">Kepercayaan Diri</label>
+            <input type="number" id="skorPD" inputmode="numeric" min="60" max="100" placeholder="60-100">
+        </div>
+        <div class="form-group">
+            <label for="skorKerapian">Kerapian</label>
+            <input type="number" id="skorKerapian" inputmode="numeric" min="60" max="100" placeholder="60-100">
+        </div>
     </div>
 
-    <button onclick="simpanNilai()">Simpan & Update Skor</button>
+    <button class="btn" onclick="simpanNilai()">Simpan & Update Skor</button>
 
-    <!-- Leaderboard / Skor Sementara -->
-    <h2>Papan Skor Sementara (Top 50)</h2>
+    <!-- Leaderboard / Skor Sementara (Top 10) -->
+    <h2>Papan Skor Sementara (Top 10)</h2>
+    
+    <div class="button-group">
+        <button class="btn btn-secondary" onclick="exportKeCSV()">Export Data Lengkap (CSV/Excel)</button>
+    </div>
+
     <div class="table-responsive">
         <table>
             <thead>
                 <tr>
-                    <th style="width: 50px; text-align: center;">Rank</th>
-                    <th style="width: 60px;">No</th>
-                    <th>Nama Peserta</th>
-                    <th style="width: 70px;">Skor</th>
-                    <th>Juri</th>
+                    <th style="width: 45px;">Rank</th>
+                    <th style="width: 40px;">No</th>
+                    <th style="text-align: left;">Nama Peserta</th>
+                    <th style="width: 60px;">Juri 1</th>
+                    <th style="width: 60px;">Juri 2</th>
+                    <th style="width: 60px;">Juri 3</th>
+                    <th style="width: 75px;">Rata-Rata</th>
                 </tr>
             </thead>
             <tbody id="tabelSkor">
@@ -167,11 +225,13 @@
             </tbody>
         </table>
     </div>
+
+    <button class="btn btn-danger" onclick="resetData()">Reset Semua Data Penilaian</button>
 </div>
 
 <script>
-    // Database 50 Peserta
-    const dataPeserta = [
+    // Database Master 50 Peserta
+    const dataPesertaMaster = [
         "PUTU BUDAYASA", "MUHAMMAD ASRI", "PRIMAYUDI", "TANDI MATONGAN", "KUBROHADI",
         "SASONO WIDODO", "NURAYAH", "TOTOK WIDI NUGROHO", "BUDIYONO", "SABAR LUMBAN TORUAN",
         "M. SAPRI", "WAGISO", "SOLIHIN", "SALMON BATUBARA", "YUZARMEN",
@@ -184,51 +244,109 @@
         "HERI SUPRIYONO", "AMINUDIN (CAPTAIN)", "BAKRI", "MAHMUDI", "DINANTA MAULANA"
     ];
 
-    let skorPeserta = dataPeserta.map((nama, index) => ({
-        noUrut: index + 1,
-        nama: nama,
-        skor: 0,
-        juri: "-"
-    }));
+    let skorPeserta = [];
 
     function init() {
+        const simpananData = localStorage.getItem("petrochina_skor_v2");
+
+        if (simpananData) {
+            skorPeserta = JSON.parse(simpananData);
+        } else {
+            skorPeserta = dataPesertaMaster.map((nama, index) => ({
+                noUrut: index + 1,
+                nama: nama,
+                juri: {
+                    1: { kreativitas: 0, pd: 0, kerapian: 0 },
+                    2: { kreativitas: 0, pd: 0, kerapian: 0 },
+                    3: { kreativitas: 0, pd: 0, kerapian: 0 }
+                }
+            }));
+        }
+
+        isiDropdownPeserta();
+        tampilkanLeaderboard();
+        
+        document.getElementById("pilihPeserta").addEventListener("change", muatNilaiInput);
+        document.getElementById("pilihJuri").addEventListener("change", muatNilaiInput);
+        muatNilaiInput();
+    }
+
+    function isiDropdownPeserta() {
         const select = document.getElementById("pilihPeserta");
+        select.innerHTML = "";
         skorPeserta.forEach(p => {
             let opt = document.createElement("option");
             opt.value = p.noUrut;
             opt.textContent = `${p.noUrut}. ${p.nama}`;
             select.appendChild(opt);
         });
-        tampilkanLeaderboard();
+    }
+
+    // Hitung rata-rata 3 kategori untuk 1 juri
+    function hitungRataJuri(dataJuri) {
+        if (!dataJuri || (dataJuri.kreativitas === 0 && dataJuri.pd === 0 && dataJuri.kerapian === 0)) return 0;
+        return (dataJuri.kreativitas + dataJuri.pd + dataJuri.kerapian) / 3;
+    }
+
+    // Hitung rata-rata gabungan dari juri yang sudah memberikan nilai
+    function hitungRataTotal(peserta) {
+        let total = 0;
+        let count = 0;
+        [1, 2, 3].forEach(idJuri => {
+            let r = hitungRataJuri(peserta.juri[idJuri]);
+            if (r > 0) {
+                total += r;
+                count++;
+            }
+        });
+        return count > 0 ? (total / count) : 0;
+    }
+
+    function muatNilaiInput() {
+        const idPeserta = parseInt(document.getElementById("pilihPeserta").value);
+        const idJuri = document.getElementById("pilihJuri").value;
+        const peserta = skorPeserta.find(p => p.noUrut === idPeserta);
+
+        if (peserta && peserta.juri[idJuri]) {
+            const data = peserta.juri[idJuri];
+            document.getElementById("skorKreativitas").value = data.kreativitas > 0 ? data.kreativitas : "";
+            document.getElementById("skorPD").value = data.pd > 0 ? data.pd : "";
+            document.getElementById("skorKerapian").value = data.kerapian > 0 ? data.kerapian : "";
+        }
     }
 
     function simpanNilai() {
-        const juri = document.getElementById("namaJuri").value.trim();
+        const idJuri = document.getElementById("pilihJuri").value;
         const idPeserta = parseInt(document.getElementById("pilihPeserta").value);
-        const nilai = parseInt(document.getElementById("nilaiKostum").value);
+        
+        const krea = parseInt(document.getElementById("skorKreativitas").value);
+        const pd = parseInt(document.getElementById("skorPD").value);
+        const rapi = parseInt(document.getElementById("skorKerapian").value);
 
-        if (!juri) {
-            alert("Harap masukkan nama juri terlebih dahulu!");
-            return;
-        }
-        if (isNaN(nilai) || nilai < 60 || nilai > 100) {
-            alert("Harap masukkan skor valid antara 60 hingga 100!");
+        if (isNaN(krea) || krea < 60 || krea > 100 ||
+            isNaN(pd) || pd < 60 || pd > 100 ||
+            isNaN(rapi) || rapi < 60 || rapi > 100) {
+            alert("Harap isi ketiga kategori (Kreativitas, Kepercayaan Diri, Kerapian) dengan skor valid antara 60 hingga 100!");
             return;
         }
 
         let peserta = skorPeserta.find(p => p.noUrut === idPeserta);
         if (peserta) {
-            peserta.skor = nilai;
-            peserta.juri = juri;
+            peserta.juri[idJuri] = {
+                kreativitas: krea,
+                pd: pd,
+                kerapian: rapi
+            };
         }
 
-        document.getElementById("nilaiKostum").value = "";
+        localStorage.setItem("petrochina_skor_v2", JSON.stringify(skorPeserta));
+
         tampilkanLeaderboard();
         
-        // Pindahkan dropdown otomatis ke peserta berikutnya agar juri lebih cepat menginput
         const select = document.getElementById("pilihPeserta");
         if (select.selectedIndex < select.options.length - 1) {
             select.selectedIndex += 1;
+            muatNilaiInput();
         }
     }
 
@@ -236,20 +354,87 @@
         const tbody = document.getElementById("tabelSkor");
         tbody.innerHTML = "";
 
-        // Urutkan dari skor tertinggi
-        let diurutkan = [...skorPeserta].sort((a, b) => b.skor - a.skor);
+        let diurutkan = skorPeserta.map(p => {
+            let r1 = hitungRataJuri(p.juri[1]);
+            let r2 = hitungRataJuri(p.juri[2]);
+            let r3 = hitungRataJuri(p.juri[3]);
+            let totalRata = hitungRataTotal(p);
+            return { ...p, r1, r2, r3, totalRata };
+        }).sort((a, b) => {
+            if (b.totalRata !== a.totalRata) {
+                return b.totalRata - a.totalRata;
+            }
+            return a.noUrut - b.noUrut;
+        });
 
-        diurutkan.forEach((p, index) => {
+        // Tampilkan HANYA Top 10 Peserta
+        let top10 = diurutkan.slice(0, 10);
+
+        top10.forEach((p, index) => {
             let tr = document.createElement("tr");
             tr.innerHTML = `
                 <td class="rank">${index + 1}</td>
                 <td>${p.noUrut}</td>
-                <td>${p.nama}</td>
-                <td><strong>${p.skor > 0 ? p.skor : '-'}</strong></td>
-                <td>${p.juri}</td>
+                <td class="text-left"><strong>${p.nama}</strong></td>
+                <td>${p.r1 > 0 ? p.r1.toFixed(1) : '-'}</td>
+                <td>${p.r2 > 0 ? p.r2.toFixed(1) : '-'}</td>
+                <td>${p.r3 > 0 ? p.r3.toFixed(1) : '-'}</td>
+                <td class="total-score">${p.totalRata > 0 ? p.totalRata.toFixed(2) : '-'}</td>
             `;
             tbody.appendChild(tr);
         });
+    }
+
+    function exportKeCSV() {
+        let csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += "Rank,No Urut,Nama Peserta,Juri 1 (Kreativitas),Juri 1 (PD),Juri 1 (Kerapian),Rata Juri 1,Juri 2 (Kreativitas),Juri 2 (PD),Juri 2 (Kerapian),Rata Juri 2,Juri 3 (Kreativitas),Juri 3 (PD),Juri 3 (Kerapian),Rata Juri 3,Rata Total 3 Juri\n";
+
+        let diurutkan = skorPeserta.map(p => {
+            let r1 = hitungRataJuri(p.juri[1]);
+            let r2 = hitungRataJuri(p.juri[2]);
+            let r3 = hitungRataJuri(p.juri[3]);
+            let totalRata = hitungRataTotal(p);
+            return { ...p, r1, r2, r3, totalRata };
+        }).sort((a, b) => {
+            if (b.totalRata !== a.totalRata) {
+                return b.totalRata - a.totalRata;
+            }
+            return a.noUrut - b.noUrut;
+        });
+
+        diurutkan.forEach((p, index) => {
+            let j1 = p.juri[1];
+            let j2 = p.juri[2];
+            let j3 = p.juri[3];
+            let row = `${index + 1},${p.noUrut},"${p.nama}",${j1.kreativitas},${j1.pd},${j1.kerapian},${p.r1.toFixed(2)},${j2.kreativitas},${j2.pd},${j2.kerapian},${p.r2.toFixed(2)},${j3.kreativitas},${j3.pd},${j3.kerapian},${p.r3.toFixed(2)},${p.totalRata.toFixed(2)}`;
+            csvContent += row + "\n";
+        });
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `Rekap_Lengkap_3Juri_Lomba_Kostum.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    function resetData() {
+        if (confirm("Apakah Anda yakin ingin menghapus seluruh nilai dari 3 Juri? Data yang dihapus tidak dapat dikembalikan.")) {
+            localStorage.removeItem("petrochina_skor_v2");
+            skorPeserta = dataPesertaMaster.map((nama, index) => ({
+                noUrut: index + 1,
+                nama: nama,
+                juri: {
+                    1: { kreativitas: 0, pd: 0, kerapian: 0 },
+                    2: { kreativitas: 0, pd: 0, kerapian: 0 },
+                    3: { kreativitas: 0, pd: 0, kerapian: 0 }
+                }
+            }));
+            muatNilaiInput();
+            tampilkanLeaderboard();
+            alert("Seluruh data berhasil di-reset!");
+        }
     }
 
     window.onload = init;
