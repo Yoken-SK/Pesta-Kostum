@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Scoring Lomba Kostum - PetroChina</title>
     <style>
-        /* CSS Murni - Dijamin Jalan Tanpa Internet & Tidak Akan Silau */
+        /* CSS Murni - Dijamin Jalan Offline & Tidak Membuat Silau */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -111,7 +111,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            border-b: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
             padding-bottom: 10px;
             margin-bottom: 16px;
         }
@@ -160,7 +160,7 @@
             background-color: #f8fafc;
             outline: none;
             transition: all 0.2s;
-            -webkit-appearance: none; /* Hilangkan default iOS arrow */
+            -webkit-appearance: none;
             appearance: none;
         }
 
@@ -294,7 +294,7 @@
         .td-total { text-align: right; font-weight: 700; color: #dc2626; font-size: 14px; font-family: monospace; }
 
         .hidden { display: none !important; }
-        .empty-text { font-size: 12px; color: #94a3b8; text-center: center; text-align: center; padding: 20px 0; }
+        .empty-text { font-size: 12px; color: #94a3b8; text-align: center; padding: 20px 0; }
     </style>
 </head>
 <body>
@@ -303,9 +303,9 @@
     <header>
         <div class="header-container">
             <div class="header-left">
-                <!-- Logo PetroChina Format Base64 SVG (Tertanam Aman Tanpa Internet) -->
+                <!-- Logo PetroChina Format Base64 SVG (Tertanam Aman & Berwarna) -->
                 <div class="logo-box">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMTAgNTBDMTAgMjIuNCAzMi40IDAgNjAgMEM4Ny42IDAgMTEwIDIyLjQgMTEwIDUwQzExMCA3Ny42IDg3LjYgMTAwIDYwIDEwMEMzMi40IDEwMCAxMCA3Ny42IDEwIDUwWiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik01MCA1QzcyLjEgNSA5MCAyMi45IDkwIDQ1QzkwIDQ3LjQgODkuOCA0OS43IDg5LjQgNTJDMTAuNiA1MiAxMC40IDQ3LjQgMTAgNDVDMTAgMjIuOSAyNy45IDUgNTAgNVoiIGZpbGw9IiNmNThhMTkiLz48cGF0aCBkPSJNNTAgNUMzOS4yIDUgMjkuMyA5LjMgMjEuOCAxNi40TDQ2LjggNDVMMzAgMTkuNk01MCA1TDUwIDQ1TTUwIDVDNjAuOCA1IDcwLjcgOS4zIDcuOCAxNi40TDUzLjIgNDVONzAgMTkuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNNTAgNDVMMTAuNSA0NkMxMS41IDcwLjQgMzEuMiA5MCA1MCA5MEM2OC44IDkwIDg4LjUgNzAuNCA4OS41IDQ2TDUwIDQ1WiIgZmlsbD0iI2MwMDAwMCIvPjwvc3ZnPg==" alt="PetroChina">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNNSA1MCBBIDQ1IDQ1IDAgMSAxIDk1IDUwIEEgNDUgNDUgMCAxIDEgNSA1MCBaIiBmaWxsPSIjZjU4YTE5Ii8+PHBhdGggZD0iTTUgNTAgQSA0NSA0NSAwIDAgMCA5NSA1MCBaIiBmaWxsPSIjYzAwMDAwIi8+PHBhdGggZD0iTTUwIDUgTDUwIDUwIE01MCA1IEwyNSA0NSBNNTAgNSBMMzcgNDUgTTUwIDUgTDYzIDQ1IE01MCA1IEw3NSA0NSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMiLz48L3N2Zz4=" alt="PetroChina">
                 </div>
                 <div class="header-title">
                     <h1>Lomba Costume Casual</h1>
@@ -317,7 +317,19 @@
     </header>
 
     <main>
-
         <!-- Card Nama Juri -->
         <section class="card card-accent">
             <label for="namaJuri">Nama Juri / Penilai</label>
+            <input type="text" id="namaJuri" placeholder="Ketik nama Anda di sini...">
+        </section>
+
+        <!-- Card Input Form -->
+        <section class="card">
+            <div class="card-title-area">
+                <div class="dot-amber"></div>
+                <h2>Form Input Nilai</h2>
+            </div>
+            
+            <div style="margin-bottom: 16px;">
+                <label for="pilihPeserta">Pilih Peserta / Tim</label>
+                <select id="pilihPeserta">
