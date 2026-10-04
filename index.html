@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Scoring Lomba Kostum Casual Sopan Rapi & Kreatif - PetroChina</title>
+    <title>Scoring Lomba Kostum - PetroChina</title>
     <style>
         /* Theme - Deep Slate Indigo Gradient (Gelap di Atas -> Terang di Bawah) */
         :root {
@@ -302,6 +302,15 @@
             content: "▼"; font-size: 10px; color: #475569;
             position: absolute; right: 12px; top: 14px; pointer-events: none;
         }
+
+        /* Status Sync Box */
+        .sync-status {
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 6px;
+            font-weight: 600;
+            color: #0369a1;
+        }
     </style>
 </head>
 <body>
@@ -374,7 +383,8 @@
         </div>
     </div>
 
-    <button class="btn" onclick="simpanNilai()">Simpan & Update Skor</button>
+    <button class="btn" id="btnSimpan" onclick="simpanNilai()">Simpan & Update Skor</button>
+    <div id="syncStatus" class="sync-status"></div>
 
     <!-- Leaderboard / Skor Sementara (Top 10) -->
     <h2>Papan Skor Sementara (Top 10)</h2>
@@ -405,6 +415,9 @@
 </div>
 
 <script>
+    // URL GOOGLE APPS SCRIPT ANDA
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzx0ke63SqOQz7FEzmN5e6iyG67sUURAxzk62GLz_JuzClqTqVz2NdWCvEXlGKND56G/exec";
+
     const dataPesertaMaster = [
         "PUTU BUDAYASA", "MUHAMMAD ASRI", "PRIMAYUDI", "TANDI MATONGAN", "KUBROHADI",
         "SASONO WIDODO", "NURAYAH", "TOTOK WIDI NUGROHO", "BUDIYONO", "SABAR LUMBAN TORUAN",
@@ -459,18 +472,16 @@
         document.getElementById("val" + kat).textContent = roundedVal;
     }
 
-    // Mengisi dropdown dengan pengurutan ABJAD (A-Z) dan tanpa nomor urut
     function isiDropdownPeserta() {
         const select = document.getElementById("pilihPeserta");
         select.innerHTML = "";
         
-        // Buat salinan array dan urutkan berdasarkan nama (A-Z)
         let pesertaDiurutkan = [...skorPeserta].sort((a, b) => a.nama.localeCompare(b.nama));
 
         pesertaDiurutkan.forEach(p => {
             let opt = document.createElement("option");
-            opt.value = p.noUrut; // Tetap menyimpan ID unik sebagai value
-            opt.textContent = p.nama; // Hanya menampilkan NAMA (urut Abjad)
+            opt.value = p.noUrut;
+            opt.textContent = p.nama;
             select.appendChild(opt);
         });
     }
@@ -526,12 +537,55 @@
         localStorage.setItem("petrochina_skor_v6", JSON.stringify(skorPeserta));
 
         tampilkanLeaderboard();
+
+        // Kirim Rekapitulasi Rata-rata Skor ke Google Sheets
+        kirimKeGoogleSheets(peserta);
         
         const select = document.getElementById("pilihPeserta");
         if (select.selectedIndex < select.options.length - 1) {
             select.selectedIndex += 1;
             muatNilaiInput();
         }
+    }
+
+    // Fungsi Pengiriman Data Asynchronous ke Google Sheets
+    function kirimKeGoogleSheets(peserta) {
+        if (!GOOGLE_SCRIPT_URL) return;
+
+        const statusEl = document.getElementById("syncStatus");
+        statusEl.textContent = "Mengirim data ke Google Sheets...";
+        statusEl.style.color = "#0369a1";
+
+        let r1 = hitungRataJuri(peserta.juri[1]);
+        let r2 = hitungRataJuri(peserta.juri[2]);
+        let r3 = hitungRataJuri(peserta.juri[3]);
+        let totalRata = hitungRataTotal(peserta);
+
+        const payload = {
+            noUrut: peserta.noUrut,
+            nama: peserta.nama,
+            r1: r1 > 0 ? r1.toFixed(2) : "-",
+            r2: r2 > 0 ? r2.toFixed(2) : "-",
+            r3: r3 > 0 ? r3.toFixed(2) : "-",
+            totalRata: totalRata > 0 ? totalRata.toFixed(2) : "-"
+        };
+
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        })
+        .then(() => {
+            statusEl.textContent = "✓ Data rekap berhasil terkirim ke Google Sheets!";
+            statusEl.style.color = "#15803d";
+            setTimeout(() => { statusEl.textContent = ""; }, 3000);
+        })
+        .catch(err => {
+            console.error(err);
+            statusEl.textContent = "× Gagal mengirim ke Google Sheets";
+            statusEl.style.color = "#b91c1c";
+        });
     }
 
     function tampilkanLeaderboard() {
